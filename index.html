@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - My Website</title>
+
+  <title>DetroitDistribution</title>
 
   <style>
     * {
@@ -12,76 +13,155 @@
       padding: 0;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #f4f4f4;
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      background: #f4f4f4;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
     header {
       background: #2563eb;
       color: white;
-      padding: 20px 40px;
+      padding: 18px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
+    /* LOGO */
     header h1 {
       font-size: 24px;
+      white-space: nowrap;
     }
 
+    /* NAVIGATION */
     nav {
       display: flex;
-      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 16px;
+      padding: 9px 13px;
       border-radius: 6px;
+      font-size: 15px;
+      transition: background 0.2s ease;
+      white-space: nowrap;
     }
 
     nav a:hover {
       background: rgba(255, 255, 255, 0.2);
     }
 
+    /* HERO */
     .hero {
-      min-height: 80vh;
+      min-height: calc(100vh - 80px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
       background: white;
     }
 
     .hero h2 {
-      font-size: 48px;
-      margin-bottom: 15px;
+      font-size: clamp(36px, 8vw, 56px);
+      margin-bottom: 18px;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: clamp(17px, 4vw, 21px);
       color: #666;
-      max-width: 600px;
+      max-width: 650px;
+      line-height: 1.6;
     }
 
+    /* FOOTER */
     footer {
       background: #111827;
       color: white;
       text-align: center;
       padding: 20px;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+
+      header {
+        flex-direction: column;
+        padding: 18px 15px;
+        gap: 12px;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      nav a {
+        padding: 9px 10px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: calc(100vh - 125px);
+        padding: 50px 20px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+
+    /* SMALL PHONES */
+    @media (max-width: 400px) {
+
+      nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+
+      nav a {
+        text-align: center;
+        padding: 10px 5px;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <h1>My Website</h1>
+
+    <h1>DetroitDistribution</h1>
 
     <nav>
       <a href="index.html">Home</a>
@@ -89,22 +169,25 @@
       <a href="cannabis.html">Cannabis</a>
       <a href="electronics.html">Electronics</a>
     </nav>
+
   </header>
 
+  <!-- HOME PAGE -->
   <main class="hero">
-    <h2>Welcome!</h2>
+
+    <h2>Welcome to DetroitDistribution</h2>
 
     <p>
-      Welcome to our website. Use the navigation above to explore
-      our different sections.
+      Your destination for quality products and distribution.
+      Explore our website using the navigation above.
     </p>
+
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 My Website. All rights reserved.</p>
+    <p>&copy; 2026 DetroitDistribution. All rights reserved.</p>
   </footer>
 
-</body>
-</html>
 </body>
 </html>
