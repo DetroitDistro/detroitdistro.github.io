@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>Home - My Website</title>
 
   <style>
     * {
@@ -12,13 +12,8 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
       color: #222;
       background: #f4f4f4;
     }
@@ -30,9 +25,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     header h1 {
@@ -49,7 +41,6 @@
       text-decoration: none;
       padding: 10px 16px;
       border-radius: 6px;
-      transition: background 0.2s;
     }
 
     nav a:hover {
@@ -57,7 +48,7 @@
     }
 
     .hero {
-      min-height: 70vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -76,49 +67,6 @@
       font-size: 20px;
       color: #666;
       max-width: 600px;
-      margin-bottom: 25px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    .button:hover {
-      background: #1d4ed8;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-      min-height: 400px;
-    }
-
-    #about {
-      background: #f9fafb;
-    }
-
-    #cannabis {
-      background: #dcfce7;
-    }
-
-    #electronics {
-      background: #e5e7eb;
-    }
-
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    section p {
-      max-width: 700px;
-      margin: auto;
-      color: #555;
     }
 
     footer {
@@ -132,62 +80,31 @@
 
 <body>
 
-  <!-- TOP NAVIGATION -->
   <header>
     <h1>My Website</h1>
 
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#cannabis">Cannabis</a>
-      <a href="#electronics">Electronics</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="cannabis.html">Cannabis</a>
+      <a href="electronics.html">Electronics</a>
     </nav>
   </header>
 
-  <main>
+  <main class="hero">
+    <h2>Welcome!</h2>
 
-    <!-- HOME -->
-    <section class="hero" id="home">
-      <h2>Welcome!</h2>
-
-      <p>
-        Welcome to my website. Explore our cannabis and electronics
-        sections using the buttons above.
-      </p>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About</h2>
-
-      <p>
-        Learn more about our website, our products, and what we have to offer.
-      </p>
-    </section>
-
-    <!-- CANNABIS -->
-    <section id="cannabis">
-      <h2>Cannabis</h2>
-
-      <p>
-        This section is for cannabis-related information and products.
-      </p>
-    </section>
-
-    <!-- ELECTRONICS -->
-    <section id="electronics">
-      <h2>Electronics</h2>
-
-      <p>
-        Browse electronics, technology, gadgets, and other products here.
-      </p>
-    </section>
-
+    <p>
+      Welcome to our website. Use the navigation above to explore
+      our different sections.
+    </p>
   </main>
 
   <footer>
     <p>&copy; 2026 My Website. All rights reserved.</p>
   </footer>
 
+</body>
+</html>
 </body>
 </html>
