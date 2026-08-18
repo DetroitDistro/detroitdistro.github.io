@@ -1,1071 +1,2955 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarketHub — Product Catalog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg: #080b0f;
-      --panel: #11161d;
-      --panel2: #171d25;
-      --border: #27303a;
-      --text: #f4f7fa;
-      --muted: #8e9aa8;
-      --green: #35d07f;
-      --green-dark: #1d9c5a;
-      --red: #ff5c6c;
-      --gold: #ffc857;
-      --blue: #5da9ff;
+<title>SilkTrail Market</title>
+
+<style>
+
+/* =====================================================
+   GENERAL
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080b09;
+    color: #c8d0c8;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+a {
+    color: #79b879;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a5dba5;
+    text-decoration: underline;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.header {
+    background: #101510;
+    border-bottom: 1px solid #293129;
+}
+
+.header-inner {
+    width: 960px;
+    max-width: calc(100% - 20px);
+    margin: auto;
+    min-height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    color: #a4cba4;
+}
+
+.logo span {
+    color: #4d864d;
+}
+
+.user-area {
+    text-align: right;
+    color: #777f77;
+}
+
+.user-area strong {
+    color: #9db39d;
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.nav {
+    background: #151a15;
+    border-bottom: 1px solid #292f29;
+}
+
+.nav-inner {
+    width: 960px;
+    max-width: calc(100% - 20px);
+    margin: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav button {
+    background: transparent;
+    color: #929b92;
+    border: 0;
+    border-right: 1px solid #292f29;
+    padding: 10px 15px;
+    font-size: 12px;
+}
+
+.nav button:hover {
+    background: #202820;
+    color: #a8d2a8;
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.container {
+    width: 960px;
+    max-width: calc(100% - 20px);
+    margin: 18px auto 50px;
+}
+
+
+/* =====================================================
+   PANELS
+   ===================================================== */
+
+.panel {
+    background: #101410;
+    border: 1px solid #2b332b;
+    margin-bottom: 15px;
+}
+
+.panel-title {
+    background: #181e18;
+    border-bottom: 1px solid #2b332b;
+    color: #a6b4a6;
+    padding: 8px 10px;
+    font-weight: bold;
+}
+
+.panel-body {
+    padding: 12px;
+}
+
+
+/* =====================================================
+   NOTICE
+   ===================================================== */
+
+.notice {
+    background: #121a12;
+    border: 1px solid #304530;
+    color: #91ad91;
+    padding: 10px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   WELCOME
+   ===================================================== */
+
+.welcome {
+    padding: 25px;
+    text-align: center;
+}
+
+.welcome h1 {
+    font-family: Georgia, serif;
+    font-size: 29px;
+    color: #abc7ab;
+    margin: 5px 0 12px;
+}
+
+.welcome p {
+    color: #7f897f;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+.search-row {
+    display: flex;
+    gap: 6px;
+}
+
+.search-row input {
+    flex: 1;
+}
+
+
+/* =====================================================
+   INPUTS
+   ===================================================== */
+
+input,
+textarea,
+select {
+    background: #080b08;
+    border: 1px solid #333b33;
+    color: #cdd5cd;
+    padding: 8px;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #547a54;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.btn {
+    background: #252c25;
+    border: 1px solid #414a41;
+    color: #b9c5b9;
+    padding: 7px 13px;
+}
+
+.btn:hover {
+    background: #303a30;
+    color: white;
+}
+
+.btn-green {
+    background: #294029;
+    border-color: #4b6e4b;
+    color: #b8d5b8;
+}
+
+.btn-red {
+    background: #351d1d;
+    border-color: #633838;
+    color: #d79a9a;
+}
+
+
+/* =====================================================
+   CATEGORIES
+   ===================================================== */
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.category {
+    background: #0c100c;
+    border: 1px solid #303830;
+    color: #8e998e;
+    padding: 7px 11px;
+}
+
+.category:hover,
+.category.active {
+    background: #1c291c;
+    border-color: #4b664b;
+    color: #a8c8a8;
+}
+
+
+/* =====================================================
+   PRODUCTS
+   ===================================================== */
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.product {
+    background: #0c100c;
+    border: 1px solid #2a302a;
+}
+
+.product:hover {
+    border-color: #465046;
+}
+
+.product-image {
+    height: 150px;
+    background: #070907;
+    border-bottom: 1px solid #272d27;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #465146;
+    font-size: 45px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 11px;
+}
+
+.product-category {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #648564;
+    letter-spacing: .5px;
+}
+
+.product-name {
+    color: #b6c4b6;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.product-description {
+    color: #747d74;
+    line-height: 1.5;
+    height: 42px;
+    overflow: hidden;
+}
+
+.product-footer {
+    border-top: 1px solid #242a24;
+    margin-top: 10px;
+    padding-top: 9px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    color: #9aa96c;
+}
+
+
+/* =====================================================
+   MODALS
+   ===================================================== */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+
+    background: rgba(0,0,0,.82);
+
+    overflow-y: auto;
+
+    padding: 30px 10px;
+}
+
+.modal-overlay.show {
+    display: block;
+}
+
+.modal {
+    width: 650px;
+    max-width: 100%;
+    margin: auto;
+
+    background: #101410;
+    border: 1px solid #3a443a;
+
+    box-shadow: 0 10px 50px #000;
+}
+
+.modal-header {
+    background: #181e18;
+    border-bottom: 1px solid #303730;
+
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header h2 {
+    font-size: 15px;
+    color: #aab8aa;
+    margin: 0;
+}
+
+.close {
+    background: none;
+    border: 0;
+    color: #778077;
+    font-size: 20px;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+
+/* =====================================================
+   FORMS
+   ===================================================== */
+
+.form-row {
+    margin-bottom: 12px;
+}
+
+.form-row label {
+    display: block;
+    color: #909990;
+    margin-bottom: 5px;
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+    width: 100%;
+}
+
+
+/* =====================================================
+   PROFILE
+   ===================================================== */
+
+.profile-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #292f29;
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+
+    background: #202920;
+    border: 1px solid #455045;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #89a589;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.profile-name {
+    color: #b6c5b6;
+    font-size: 20px;
+}
+
+.status {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    padding: 3px 7px;
+
+    background: #202820;
+    border: 1px solid #3b493b;
+
+    color: #8eaa8e;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   REVIEWS
+   ===================================================== */
+
+.review {
+    padding: 11px 0;
+    border-bottom: 1px solid #272d27;
+}
+
+.review:last-child {
+    border-bottom: 0;
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-user {
+    color: #9ab39a;
+    font-weight: bold;
+}
+
+.review-date {
+    color: #555e55;
+    font-size: 11px;
+}
+
+.review-stars {
+    color: #a5aa69;
+    margin: 4px 0;
+}
+
+.review-text {
+    color: #828b82;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   ADMIN TABLE
+   ===================================================== */
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #293029;
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #191f19;
+    color: #929f92;
+}
+
+.admin-table td {
+    color: #7f887f;
+}
+
+.status-select {
+    width: auto;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer {
+    width: 960px;
+    max-width: calc(100% - 20px);
+
+    margin: auto;
+
+    border-top: 1px solid #252b25;
+
+    padding: 20px 0 40px;
+
+    color: #4e574e;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   PAGES
+   ===================================================== */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.empty {
+    padding: 35px;
+    text-align: center;
+    color: #606960;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media(max-width: 700px) {
+
+    .header-inner {
+        display: block;
+        padding: 12px 0;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    .user-area {
+        text-align: left;
+        margin-top: 8px;
     }
 
-    body {
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(53,208,127,.08), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(93,169,255,.07), transparent 28%),
-        var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    button, input, select, textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* NAV */
-
-    nav {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
-      border-bottom: 1px solid var(--border);
-      background: rgba(8,11,15,.88);
-      backdrop-filter: blur(14px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .admin-button {
-      background: var(--green);
-      color: #06140c;
-      border: 0;
-      padding: 10px 17px;
-      border-radius: 9px;
-      font-weight: 700;
-    }
-
-    .admin-button:hover {
-      background: #55e996;
-    }
-
-    /* HERO */
-
-    .hero {
-      max-width: 1200px;
-      margin: auto;
-      padding: 75px 24px 45px;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      color: var(--green);
-      border: 1px solid rgba(53,208,127,.3);
-      background: rgba(53,208,127,.07);
-      padding: 7px 13px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: .95;
-      letter-spacing: -4px;
-      margin-bottom: 22px;
-    }
-
-    h1 span {
-      color: var(--green);
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    /* SEARCH */
-
-    .search-area {
-      max-width: 900px;
-      margin: 10px auto 45px;
-      padding: 0 24px;
-    }
-
-    .search-box {
-      display: flex;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 6px;
-    }
-
-    .search-icon {
-      padding: 0 13px;
-      font-size: 19px;
-    }
-
-    .search-box input {
-      flex: 1;
-      background: transparent;
-      border: 0;
-      outline: 0;
-      color: white;
-      padding: 14px 5px;
-      font-size: 16px;
-    }
-
-    /* FILTERS */
-
-    .filters {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 24px 28px;
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-    }
-
-    .filter {
-      background: var(--panel);
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 10px 16px;
-      border-radius: 9px;
-      transition: .2s;
-    }
-
-    .filter:hover,
-    .filter.active {
-      background: rgba(53,208,127,.12);
-      color: var(--green);
-      border-color: rgba(53,208,127,.4);
-    }
-
-    /* PRODUCTS */
-
-    .products-wrap {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 24px 80px;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-
-    .section-heading h2 {
-      font-size: 22px;
-    }
-
-    #resultCount {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .product {
-      background: linear-gradient(145deg, var(--panel), #0d1116);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: .25s;
-    }
-
-    .product:hover {
-      transform: translateY(-4px);
-      border-color: #3a4652;
-      box-shadow: 0 15px 35px rgba(0,0,0,.25);
-    }
-
-    .product-image {
-      height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 65px;
-      background:
-        radial-gradient(circle at center, rgba(53,208,127,.13), transparent 60%),
-        #0d1217;
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-body {
-      padding: 19px;
-    }
-
-    .category {
-      color: var(--green);
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .product h3 {
-      font-size: 19px;
-      margin: 7px 0;
-    }
-
-    .description {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-      min-height: 44px;
-    }
-
-    .product-bottom {
-      margin-top: 17px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .rating {
-      color: var(--gold);
-      font-size: 14px;
-    }
-
-    .view-button {
-      border: 1px solid var(--border);
-      background: var(--panel2);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-    }
-
-    .view-button:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
-
-    /* MODALS */
-
-    .modal-bg {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(5px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 100;
-    }
-
-    .modal-bg.show {
-      display: flex;
-    }
-
-    .modal {
-      background: #10151b;
-      border: 1px solid var(--border);
-      width: min(600px, 100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 17px;
-      padding: 26px;
-      position: relative;
-      box-shadow: 0 25px 80px rgba(0,0,0,.5);
-    }
-
-    .close {
-      position: absolute;
-      right: 17px;
-      top: 14px;
-      background: transparent;
-      color: var(--muted);
-      border: 0;
-      font-size: 25px;
-    }
-
-    .modal h2 {
-      margin-bottom: 20px;
-    }
-
-    /* FORMS */
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      color: #c8d0d8;
-      font-size: 13px;
-      margin-bottom: 7px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      background: #0b0f14;
-      color: white;
-      outline: 0;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .submit {
-      width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 9px;
-      background: var(--green);
-      color: #06140c;
-      font-weight: 800;
-    }
-
-    /* REVIEW */
-
-    .review {
-      border-top: 1px solid var(--border);
-      padding: 15px 0;
-    }
-
-    .review:first-child {
-      margin-top: 15px;
-    }
-
-    .review-name {
-      font-weight: 700;
-    }
-
-    .review-stars {
-      color: var(--gold);
-      margin: 4px 0;
-    }
-
-    .review p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .review-form {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ADMIN */
-
-    .admin-note {
-      background: rgba(53,208,127,.08);
-      border: 1px solid rgba(53,208,127,.2);
-      color: #a8eac5;
-      padding: 12px;
-      border-radius: 9px;
-      font-size: 13px;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .admin-products {
-      margin-top: 25px;
-    }
-
-    .admin-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 13px 0;
-      border-top: 1px solid var(--border);
-      gap: 15px;
-    }
-
-    .delete-btn {
-      background: rgba(255,92,108,.1);
-      color: var(--red);
-      border: 1px solid rgba(255,92,108,.25);
-      padding: 7px 11px;
-      border-radius: 7px;
-    }
-
-    /* EMPTY */
-
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 70px 20px;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 30px 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width: 850px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width: 570px) {
-      nav {
-        padding: 0 18px;
-      }
-
-      .hero {
-        padding-top: 55px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .products {
+    .product-list {
         grid-template-columns: 1fr;
-      }
-
-      .admin-button {
-        padding: 8px 11px;
-      }
     }
-  </style>
+
+    .nav-inner {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .nav button {
+        border-bottom: 1px solid #292f29;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">Market<span>Hub</span></div>
 
-    <div class="nav-right">
-      <button class="admin-button" onclick="openAdmin()">
-        Admin
-      </button>
-    </div>
-  </nav>
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="badge">PRODUCT SHOWCASE</div>
+<header class="header">
 
-    <h1>Discover <span>Products.</span></h1>
+    <div class="header-inner">
 
-    <p>
-      Browse the catalog, search by name, explore categories,
-      and share your opinion through product reviews.
-    </p>
-  </section>
-
-  <!-- SEARCH -->
-  <section class="search-area">
-    <div class="search-box">
-      <div class="search-icon">⌕</div>
-
-      <input
-        id="search"
-        type="text"
-        placeholder="Search products..."
-        oninput="renderProducts()"
-      >
-    </div>
-  </section>
-
-  <!-- FILTERS -->
-  <div class="filters">
-    <button class="filter active" onclick="setCategory('All', this)">All</button>
-    <button class="filter" onclick="setCategory('Electronics', this)">Electronics</button>
-    <button class="filter" onclick="setCategory('Tools', this)">Tools</button>
-    <button class="filter" onclick="setCategory('Cannabis', this)">Cannabis</button>
-    <button class="filter" onclick="setCategory('Flower', this)">Flower</button>
-    <button class="filter" onclick="setCategory('Vapes', this)">Vapes</button>
-  </div>
-
-  <!-- PRODUCTS -->
-  <main class="products-wrap">
-
-    <div class="section-heading">
-      <h2>Product Catalog</h2>
-      <span id="resultCount"></span>
-    </div>
-
-    <div class="products" id="products"></div>
-
-  </main>
-
-  <footer>
-    MarketHub — Product showcase & community reviews
-  </footer>
-
-
-  <!-- PRODUCT MODAL -->
-  <div class="modal-bg" id="productModal">
-    <div class="modal">
-      <button class="close" onclick="closeModal('productModal')">×</button>
-
-      <div id="productDetails"></div>
-    </div>
-  </div>
-
-
-  <!-- ADMIN MODAL -->
-  <div class="modal-bg" id="adminModal">
-    <div class="modal">
-
-      <button class="close" onclick="closeModal('adminModal')">×</button>
-
-      <h2>Admin Dashboard</h2>
-
-      <div class="admin-note">
-        You are the site administrator. Only the administrator can
-        add or delete products in this demo.
-      </div>
-
-      <form onsubmit="addProduct(event)">
-
-        <div class="form-group">
-          <label>Product Name</label>
-          <input id="productName" required placeholder="Example: Wireless Headphones">
+        <div class="logo">
+            Silk<span>Trail</span>
         </div>
 
-        <div class="form-group">
-          <label>Category</label>
+        <div
+            class="user-area"
+            id="userArea">
 
-          <select id="productCategory" required>
-            <option value="Electronics">Electronics</option>
-            <option value="Tools">Tools</option>
-            <option value="Cannabis">Cannabis</option>
-            <option value="Flower">Flower</option>
-            <option value="Vapes">Vapes</option>
-          </select>
+            Guest
+            <br>
+
+            <a
+                href="#"
+                onclick="showPage('login')">
+                Login
+            </a>
+
+            /
+
+            <a
+                href="#"
+                onclick="showPage('register')">
+                Register
+            </a>
+
         </div>
 
-        <div class="form-group">
-          <label>Description</label>
-          <textarea
-            id="productDescription"
-            required
-            placeholder="Describe the product..."
-          ></textarea>
-        </div>
+    </div>
 
-        <div class="form-group">
-          <label>Image URL (optional)</label>
-          <input
-            id="productImage"
-            type="url"
-            placeholder="https://..."
-          >
-        </div>
+</header>
 
-        <button class="submit" type="submit">
-          Add Product
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav class="nav">
+
+    <div class="nav-inner">
+
+        <button
+            onclick="showPage('home')">
+            Home
         </button>
 
-      </form>
+        <button
+            onclick="showPage('catalog')">
+            Catalog
+        </button>
 
-      <div class="admin-products">
-        <h3>Manage Products</h3>
-        <div id="adminList"></div>
-      </div>
+        <button
+            onclick="showCategory('Electronics')">
+            Electronics
+        </button>
+
+        <button
+            onclick="showCategory('Tools')">
+            Tools
+        </button>
+
+        <button
+            onclick="showCategory('Cannabis')">
+            Cannabis
+        </button>
+
+        <button
+            onclick="showCategory('Flower')">
+            Flower
+        </button>
+
+        <button
+            onclick="showCategory('Vapes')">
+            Vapes
+        </button>
+
+        <button
+            onclick="showPage('profile')">
+            Profile
+        </button>
+
+        <button
+            id="adminNav"
+            style="display:none"
+            onclick="showPage('admin')">
+            Admin
+        </button>
 
     </div>
-  </div>
 
+</nav>
 
-  <script>
 
-    /*
-      ========================================
-      DEMO DATA
-      ========================================
-    */
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
 
-    let products = JSON.parse(
-      localStorage.getItem("marketHubProducts")
-    ) || [
+<div class="container">
 
-      {
-        id: 1,
-        name: "Wireless Headphones",
-        category: "Electronics",
-        description: "Premium wireless headphones with noise cancellation.",
-        image: "",
-        reviews: [
-          {
-            name: "Alex",
-            stars: 5,
-            text: "Great looking product."
-          }
-        ]
-      },
 
-      {
-        id: 2,
-        name: "Professional Tool Kit",
-        category: "Tools",
-        description: "Complete multi-piece tool kit for everyday projects.",
-        image: "",
-        reviews: []
-      },
+<!-- =====================================================
+     HOME
+     ===================================================== -->
 
-      {
-        id: 3,
-        name: "Premium Flower",
-        category: "Flower",
-        description: "Showcase listing for premium flower.",
-        image: "",
-        reviews: []
-      },
+<section
+    id="page-home"
+    class="page active">
 
-      {
-        id: 4,
-        name: "Vape Showcase",
-        category: "Vapes",
-        description: "Example vape product listing for the catalog.",
-        image: "",
-        reviews: []
-      },
+    <div class="panel welcome">
 
-      {
-        id: 5,
-        name: "Cannabis Showcase",
-        category: "Cannabis",
-        description: "Example cannabis catalog listing.",
-        image: "",
-        reviews: []
-      }
+        <h1>
+            Welcome to SilkTrail
+        </h1>
 
-    ];
-
-    let currentCategory = "All";
-    let currentProduct = null;
-
-
-    /*
-      ========================================
-      SAVE DATA
-      ========================================
-    */
-
-    function saveProducts() {
-      localStorage.setItem(
-        "marketHubProducts",
-        JSON.stringify(products)
-      );
-    }
-
-
-    /*
-      ========================================
-      CATEGORY FILTER
-      ========================================
-    */
-
-    function setCategory(category, button) {
-
-      currentCategory = category;
-
-      document.querySelectorAll(".filter").forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-      renderProducts();
-    }
-
-
-    /*
-      ========================================
-      RENDER PRODUCTS
-      ========================================
-    */
-
-    function renderProducts() {
-
-      const container = document.getElementById("products");
-
-      const search =
-        document.getElementById("search").value
-        .toLowerCase()
-        .trim();
-
-      let filtered = products.filter(product => {
-
-        const matchesCategory =
-          currentCategory === "All" ||
-          product.category === currentCategory;
-
-        const matchesSearch =
-          product.name.toLowerCase().includes(search) ||
-          product.description.toLowerCase().includes(search) ||
-          product.category.toLowerCase().includes(search);
-
-        return matchesCategory && matchesSearch;
-
-      });
-
-      document.getElementById("resultCount").textContent =
-        `${filtered.length} product${filtered.length === 1 ? "" : "s"}`;
-
-      if (!filtered.length) {
-
-        container.innerHTML = `
-          <div class="empty">
-            <h3>No products found</h3>
-            <p>Try another search or category.</p>
-          </div>
-        `;
-
-        return;
-      }
-
-      container.innerHTML = filtered.map(product => {
-
-        const average = getAverageRating(product);
-
-        const image = product.image
-          ? `<img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}">`
-          : getEmoji(product.category);
-
-        return `
-
-          <article class="product">
-
-            <div class="product-image">
-              ${image}
-            </div>
-
-            <div class="product-body">
-
-              <div class="category">
-                ${escapeHTML(product.category)}
-              </div>
-
-              <h3>
-                ${escapeHTML(product.name)}
-              </h3>
-
-              <p class="description">
-                ${escapeHTML(product.description)}
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="rating">
-                  ${average
-                    ? `★ ${average}`
-                    : "☆ No reviews"}
-                </div>
-
-                <button
-                  class="view-button"
-                  onclick="viewProduct(${product.id})"
-                >
-                  View
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }).join("");
-    }
-
-
-    /*
-      ========================================
-      PRODUCT DETAILS
-      ========================================
-    */
-
-    function viewProduct(id) {
-
-      currentProduct = products.find(p => p.id === id);
-
-      if (!currentProduct) return;
-
-      const reviews = currentProduct.reviews || [];
-
-      const reviewHTML = reviews.length
-
-        ? reviews.map(review => `
-
-            <div class="review">
-
-              <div class="review-name">
-                ${escapeHTML(review.name)}
-              </div>
-
-              <div class="review-stars">
-                ${"★".repeat(review.stars)}
-                ${"☆".repeat(5 - review.stars)}
-              </div>
-
-              <p>
-                ${escapeHTML(review.text)}
-              </p>
-
-            </div>
-
-          `).join("")
-
-        : `<p style="color:#8e9aa8;margin-top:15px;">
-            No reviews yet. Be the first.
-          </p>`;
-
-      document.getElementById("productDetails").innerHTML = `
-
-        <div class="product-image"
-             style="height:250px;border-radius:12px;margin-bottom:20px;">
-
-          ${
-            currentProduct.image
-            ? `<img src="${escapeHTML(currentProduct.image)}"
-                    alt="${escapeHTML(currentProduct.name)}">`
-            : getEmoji(currentProduct.category)
-          }
-
-        </div>
-
-        <div class="category">
-          ${escapeHTML(currentProduct.category)}
-        </div>
-
-        <h2>
-          ${escapeHTML(currentProduct.name)}
-        </h2>
-
-        <p style="color:#8e9aa8;line-height:1.7;">
-          ${escapeHTML(currentProduct.description)}
+        <p>
+            Browse the catalog, search listings,
+            explore categories and leave reviews.
         </p>
 
-        <h3 style="margin-top:28px;">
-          Reviews
-        </h3>
+    </div>
 
-        ${reviewHTML}
 
-        <div class="review-form">
+    <div class="panel">
 
-          <h3>Leave a Review</h3>
+        <div class="panel-title">
+            Search the Catalog
+        </div>
 
-          <form onsubmit="submitReview(event)">
+        <div class="panel-body">
 
-            <div class="form-group">
-              <label>Your Name</label>
-              <input id="reviewName" required maxlength="40">
-            </div>
+            <div class="search-row">
 
-            <div class="form-group">
+                <input
+                    id="homeSearch"
+                    placeholder="Search products..."
+                    onkeydown="searchFromHome(event)">
 
-              <label>Rating</label>
-
-              <select id="reviewStars">
-                <option value="5">★★★★★ — 5</option>
-                <option value="4">★★★★☆ — 4</option>
-                <option value="3">★★★☆☆ — 3</option>
-                <option value="2">★★☆☆☆ — 2</option>
-                <option value="1">★☆☆☆☆ — 1</option>
-              </select>
+                <button
+                    class="btn btn-green"
+                    onclick="searchCatalog()">
+                    Search
+                </button>
 
             </div>
-
-            <div class="form-group">
-
-              <label>Review</label>
-
-              <textarea
-                id="reviewText"
-                required
-                maxlength="500"
-                placeholder="Write your review..."
-              ></textarea>
-
-            </div>
-
-            <button class="submit">
-              Post Review
-            </button>
-
-          </form>
 
         </div>
 
-      `;
+    </div>
 
-      document
-        .getElementById("productModal")
-        .classList.add("show");
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Categories
+        </div>
+
+        <div class="panel-body">
+
+            <div class="categories">
+
+                <button
+                    class="category"
+                    onclick="showCategory('Electronics')">
+                    Electronics
+                </button>
+
+                <button
+                    class="category"
+                    onclick="showCategory('Tools')">
+                    Tools
+                </button>
+
+                <button
+                    class="category"
+                    onclick="showCategory('Cannabis')">
+                    Cannabis
+                </button>
+
+                <button
+                    class="category"
+                    onclick="showCategory('Flower')">
+                    Flower
+                </button>
+
+                <button
+                    class="category"
+                    onclick="showCategory('Vapes')">
+                    Vapes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Latest Listings
+        </div>
+
+        <div class="panel-body">
+
+            <div
+                class="product-list"
+                id="homeProducts">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CATALOG
+     ===================================================== -->
+
+<section
+    id="page-catalog"
+    class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Product Catalog
+        </div>
+
+        <div class="panel-body">
+
+            <div class="search-row">
+
+                <input
+                    id="catalogSearch"
+                    placeholder="Search catalog..."
+                    oninput="renderCatalog()">
+
+                <select
+                    id="catalogCategory"
+                    onchange="renderCatalog()">
+
+                    <option value="All">
+                        All Categories
+                    </option>
+
+                    <option>
+                        Electronics
+                    </option>
+
+                    <option>
+                        Tools
+                    </option>
+
+                    <option>
+                        Cannabis
+                    </option>
+
+                    <option>
+                        Flower
+                    </option>
+
+                    <option>
+                        Vapes
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Listings
+            <span id="catalogCount"></span>
+        </div>
+
+        <div class="panel-body">
+
+            <div
+                class="product-list"
+                id="catalogProducts">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN
+     ===================================================== -->
+
+<section
+    id="page-login"
+    class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Member Login
+        </div>
+
+        <div class="panel-body">
+
+            <div class="notice">
+
+                Demo website:
+                accounts are stored locally
+                in the browser.
+
+                <br><br>
+
+                Do not use a real password.
+
+            </div>
+
+
+            <form
+                onsubmit="login(event)">
+
+                <div class="form-row">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        id="loginUsername"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        required>
+
+                </div>
+
+
+                <button
+                    class="btn btn-green">
+                    Login
+                </button>
+
+            </form>
+
+
+            <br>
+
+            Don't have an account?
+
+            <a
+                href="#"
+                onclick="showPage('register')">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REGISTER
+     ===================================================== -->
+
+<section
+    id="page-register"
+    class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Create Account
+        </div>
+
+        <div class="panel-body">
+
+            <form
+                onsubmit="register(event)">
+
+                <div class="form-row">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        id="registerUsername"
+                        minlength="3"
+                        maxlength="24"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        id="registerPassword"
+                        type="password"
+                        minlength="4"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        About You
+                    </label>
+
+                    <textarea
+                        id="registerBio"
+                        maxlength="300"
+                        placeholder="Tell people about yourself">
+                    </textarea>
+
+                </div>
+
+
+                <button
+                    class="btn btn-green">
+                    Create Account
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+     ===================================================== -->
+
+<section
+    id="page-profile"
+    class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            User Profile
+        </div>
+
+        <div
+            class="panel-body"
+            id="profileContent">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+     ===================================================== -->
+
+<section
+    id="page-admin"
+    class="page">
+
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Administration
+        </div>
+
+        <div class="panel-body">
+
+            <div class="notice">
+
+                You are viewing the administrator
+                control panel.
+
+                <br><br>
+
+                Admins can add products, delete products,
+                manage users and promote other accounts
+                to administrator.
+
+            </div>
+
+
+            <button
+                class="btn btn-green"
+                onclick="showPage('add-product')">
+
+                + Add Product
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- USERS -->
+
+    <div class="panel">
+
+        <div class="panel-title">
+            User Management
+        </div>
+
+        <div class="panel-body">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Username
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Joined
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="usersTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Product Management
+        </div>
+
+        <div class="panel-body">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="adminProductsTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADD PRODUCT
+     ===================================================== -->
+
+<section
+    id="page-add-product"
+    class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Add Product
+        </div>
+
+        <div class="panel-body">
+
+
+            <form
+                onsubmit="addProduct(event)">
+
+
+                <div class="form-row">
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        id="newProductName"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select
+                        id="newProductCategory">
+
+                        <option>
+                            Electronics
+                        </option>
+
+                        <option>
+                            Tools
+                        </option>
+
+                        <option>
+                            Cannabis
+                        </option>
+
+                        <option>
+                            Flower
+                        </option>
+
+                        <option>
+                            Vapes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="newProductDescription"
+                        required>
+                    </textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Image URL
+                    </label>
+
+                    <input
+                        id="newProductImage"
+                        placeholder="Optional image URL">
+
+                </div>
+
+
+                <button
+                    class="btn btn-green">
+
+                    Add Listing
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="footer">
+
+    SilkTrail © 2026
+
+    <br><br>
+
+    Product showcase and community review site.
+    No purchasing or transaction functionality.
+
+</footer>
+
+
+<!-- =====================================================
+     PRODUCT MODAL
+     ===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="productModal"
+    onclick="closeModalOutside(event)">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2
+                id="modalProductTitle">
+                Product
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeProduct()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="modal-body"
+            id="modalProductContent">
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DEFAULT USERS
+
+   KING.SCRAP IS THE BUILT-IN ADMIN
+   ===================================================== */
+
+const DEFAULT_USERS = [
+
+    {
+        username: "king.scrap",
+
+        password: "BananaMontana",
+
+        status: "Admin",
+
+        bio: "Site administrator.",
+
+        joined: "August 18, 2026"
+    }
+
+];
+
+
+/* =====================================================
+   DEFAULT PRODUCTS
+   ===================================================== */
+
+const DEFAULT_PRODUCTS = [
+
+    {
+        id: 1,
+
+        name: "Example Headphones",
+
+        category: "Electronics",
+
+        description:
+            "Example electronics listing for the catalog.",
+
+        image: "",
+
+        reviews: []
+    },
+
+
+    {
+        id: 2,
+
+        name: "Workshop Tool Kit",
+
+        category: "Tools",
+
+        description:
+            "Example tools listing.",
+
+        image: "",
+
+        reviews: []
+    },
+
+
+    {
+        id: 3,
+
+        name: "Example Flower Listing",
+
+        category: "Flower",
+
+        description:
+            "Example catalog entry.",
+
+        image: "",
+
+        reviews: []
+    },
+
+
+    {
+        id: 4,
+
+        name: "Example Vape Listing",
+
+        category: "Vapes",
+
+        description:
+            "Example catalog entry.",
+
+        image: "",
+
+        reviews: []
+    },
+
+
+    {
+        id: 5,
+
+        name: "Example Cannabis Listing",
+
+        category: "Cannabis",
+
+        description:
+            "Example catalog entry.",
+
+        image: "",
+
+        reviews: []
+    }
+
+];
+
+
+/* =====================================================
+   LOAD DATABASE
+   ===================================================== */
+
+let users =
+    JSON.parse(
+        localStorage.getItem(
+            "silktrail_users"
+        )
+    )
+    || DEFAULT_USERS;
+
+
+let products =
+    JSON.parse(
+        localStorage.getItem(
+            "silktrail_products"
+        )
+    )
+    || DEFAULT_PRODUCTS;
+
+
+let currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "silktrail_currentUser"
+        )
+    )
+    || null;
+
+
+/* =====================================================
+   SAVE DATABASE
+   ===================================================== */
+
+function saveUsers() {
+
+    localStorage.setItem(
+        "silktrail_users",
+        JSON.stringify(users)
+    );
+
+}
+
+
+function saveProducts() {
+
+    localStorage.setItem(
+        "silktrail_products",
+        JSON.stringify(products)
+    );
+
+}
+
+
+/* =====================================================
+   PAGE NAVIGATION
+   ===================================================== */
+
+function showPage(page) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            p => p.classList.remove("active")
+        );
+
+
+    const target =
+        document.getElementById(
+            "page-" + page
+        );
+
+
+    if (!target) return;
+
+
+    target.classList.add("active");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    if (page === "catalog") {
+
+        renderCatalog();
+
     }
 
 
-    /*
-      ========================================
-      REVIEWS
-      ========================================
-    */
+    if (page === "profile") {
 
-    function submitReview(event) {
+        renderProfile();
 
-      event.preventDefault();
-
-      if (!currentProduct) return;
-
-      const name =
-        document.getElementById("reviewName").value.trim();
-
-      const stars =
-        Number(document.getElementById("reviewStars").value);
-
-      const text =
-        document.getElementById("reviewText").value.trim();
-
-      currentProduct.reviews.push({
-        name,
-        stars,
-        text
-      });
-
-      saveProducts();
-
-      viewProduct(currentProduct.id);
-
-      renderProducts();
     }
 
 
-    /*
-      ========================================
-      ADMIN
-      ========================================
-    */
+    if (page === "admin") {
 
-    function openAdmin() {
+        if (!isAdmin()) {
 
-      /*
-        DEMO ADMIN LOGIN
+            alert(
+                "Administrator access required."
+            );
 
-        Change this password if you want.
-        Remember that this is NOT secure authentication
-        because this is a static GitHub Pages website.
-      */
+            showPage("home");
 
-      const password = prompt("Admin password:");
+            return;
 
-      if (password !== "admin123") {
-
-        if (password !== null) {
-          alert("Incorrect admin password.");
         }
 
-        return;
-      }
+        renderAdmin();
 
-      document
-        .getElementById("adminModal")
-        .classList.add("show");
+    }
 
-      renderAdminList();
+}
+
+
+/* =====================================================
+   ADMIN CHECK
+   ===================================================== */
+
+function isAdmin() {
+
+    return (
+        currentUser &&
+        currentUser.status === "Admin"
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE USER AREA
+   ===================================================== */
+
+function updateUserArea() {
+
+    const area =
+        document.getElementById(
+            "userArea"
+        );
+
+
+    const adminNav =
+        document.getElementById(
+            "adminNav"
+        );
+
+
+    if (currentUser) {
+
+        area.innerHTML = `
+
+            Logged in as
+            <strong>
+                ${escapeHTML(
+                    currentUser.username
+                )}
+            </strong>
+
+            <br>
+
+            <a
+                href="#"
+                onclick="showPage('profile')">
+                Profile
+            </a>
+
+            |
+
+            <a
+                href="#"
+                onclick="logout()">
+                Logout
+            </a>
+
+        `;
+
+    } else {
+
+        area.innerHTML = `
+
+            Guest
+
+            <br>
+
+            <a
+                href="#"
+                onclick="showPage('login')">
+                Login
+            </a>
+
+            /
+
+            <a
+                href="#"
+                onclick="showPage('register')">
+                Register
+            </a>
+
+        `;
+
     }
 
 
-    /*
-      ========================================
-      ADD PRODUCT
-      ========================================
-    */
+    adminNav.style.display =
+        isAdmin()
+        ? "block"
+        : "none";
 
-    function addProduct(event) {
+}
 
-      event.preventDefault();
 
-      const name =
-        document.getElementById("productName").value.trim();
+/* =====================================================
+   REGISTER
+   ===================================================== */
 
-      const category =
-        document.getElementById("productCategory").value;
+function register(event) {
 
-      const description =
-        document.getElementById("productDescription").value.trim();
+    event.preventDefault();
 
-      const image =
-        document.getElementById("productImage").value.trim();
 
-      const newProduct = {
+    const username =
+        document
+            .getElementById(
+                "registerUsername"
+            )
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById(
+                "registerPassword"
+            )
+            .value;
+
+
+    const bio =
+        document
+            .getElementById(
+                "registerBio"
+            )
+            .value
+            .trim();
+
+
+    if (
+        users.some(
+            u =>
+                u.username.toLowerCase()
+                ===
+                username.toLowerCase()
+        )
+    ) {
+
+        alert(
+            "That username already exists."
+        );
+
+        return;
+
+    }
+
+
+    const newUser = {
+
+        username,
+
+        password,
+
+        status: "Member",
+
+        bio,
+
+        joined:
+            new Date()
+                .toLocaleDateString(
+                    undefined,
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    }
+                )
+
+    };
+
+
+    users.push(newUser);
+
+
+    saveUsers();
+
+
+    currentUser = newUser;
+
+
+    localStorage.setItem(
+        "silktrail_currentUser",
+        JSON.stringify(
+            currentUser
+        )
+    );
+
+
+    updateUserArea();
+
+
+    alert(
+        "Account created."
+    );
+
+
+    showPage("profile");
+
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+function login(event) {
+
+    event.preventDefault();
+
+
+    const username =
+        document
+            .getElementById(
+                "loginUsername"
+            )
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById(
+                "loginPassword"
+            )
+            .value;
+
+
+    const user =
+        users.find(
+            u =>
+                u.username.toLowerCase()
+                ===
+                username.toLowerCase()
+                &&
+                u.password === password
+        );
+
+
+    if (!user) {
+
+        alert(
+            "Invalid username or password."
+        );
+
+        return;
+
+    }
+
+
+    currentUser = user;
+
+
+    localStorage.setItem(
+        "silktrail_currentUser",
+        JSON.stringify(
+            currentUser
+        )
+    );
+
+
+    updateUserArea();
+
+
+    alert(
+        "Welcome back, "
+        + user.username
+        + "."
+    );
+
+
+    showPage("profile");
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+function logout() {
+
+    currentUser = null;
+
+
+    localStorage.removeItem(
+        "silktrail_currentUser"
+    );
+
+
+    updateUserArea();
+
+
+    showPage("home");
+
+}
+
+
+/* =====================================================
+   PROFILE
+   ===================================================== */
+
+function renderProfile() {
+
+    const content =
+        document.getElementById(
+            "profileContent"
+        );
+
+
+    if (!currentUser) {
+
+        content.innerHTML = `
+
+            <div class="empty">
+
+                You must be logged in
+                to view your profile.
+
+                <br><br>
+
+                <button
+                    class="btn btn-green"
+                    onclick="showPage('login')">
+
+                    Login
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let reviewCount = 0;
+
+
+    products.forEach(product => {
+
+        if (!product.reviews) return;
+
+
+        product.reviews.forEach(review => {
+
+            if (
+                review.username
+                ===
+                currentUser.username
+            ) {
+
+                reviewCount++;
+
+            }
+
+        });
+
+    });
+
+
+    content.innerHTML = `
+
+        <div class="profile-header">
+
+            <div class="avatar">
+
+                ${escapeHTML(
+                    currentUser.username
+                        .charAt(0)
+                        .toUpperCase()
+                )}
+
+            </div>
+
+
+            <div>
+
+                <div class="profile-name">
+
+                    ${escapeHTML(
+                        currentUser.username
+                    )}
+
+                </div>
+
+
+                <div class="status">
+
+                    ${escapeHTML(
+                        currentUser.status
+                    )}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <strong>
+            About
+        </strong>
+
+
+        <p
+            style="
+                color:#7f887f;
+                line-height:1.6;
+            ">
+
+            ${escapeHTML(
+                currentUser.bio
+                ||
+                "No profile description."
+            )}
+
+        </p>
+
+
+        <hr
+            style="
+                border-color:#292f29;
+            ">
+
+
+        <strong>
+            Joined:
+        </strong>
+
+        ${escapeHTML(
+            currentUser.joined
+        )}
+
+
+        <br><br>
+
+
+        <strong>
+            Reviews:
+        </strong>
+
+        ${reviewCount}
+
+    `;
+
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+function searchFromHome(event) {
+
+    if (
+        event.key === "Enter"
+    ) {
+
+        searchCatalog();
+
+    }
+
+}
+
+
+function searchCatalog() {
+
+    const value =
+        document
+            .getElementById(
+                "homeSearch"
+            )
+            .value;
+
+
+    showPage("catalog");
+
+
+    document
+        .getElementById(
+            "catalogSearch"
+        )
+        .value = value;
+
+
+    renderCatalog();
+
+}
+
+
+/* =====================================================
+   CATEGORY
+   ===================================================== */
+
+function showCategory(category) {
+
+    showPage("catalog");
+
+
+    document
+        .getElementById(
+            "catalogCategory"
+        )
+        .value = category;
+
+
+    renderCatalog();
+
+}
+
+
+/* =====================================================
+   HOME PRODUCTS
+   ===================================================== */
+
+function renderHome() {
+
+    const container =
+        document.getElementById(
+            "homeProducts"
+        );
+
+
+    const latest =
+        products.slice(0, 6);
+
+
+    if (!latest.length) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+                No products yet.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        latest
+            .map(productCard)
+            .join("");
+
+}
+
+
+/* =====================================================
+   CATALOG
+   ===================================================== */
+
+function renderCatalog() {
+
+    const search =
+        document
+            .getElementById(
+                "catalogSearch"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const category =
+        document
+            .getElementById(
+                "catalogCategory"
+            )
+            .value;
+
+
+    const filtered =
+        products.filter(
+            product => {
+
+                const categoryMatch =
+                    category === "All"
+                    ||
+                    product.category
+                    === category;
+
+
+                const searchMatch =
+                    !search
+                    ||
+                    product.name
+                        .toLowerCase()
+                        .includes(search)
+                    ||
+                    product.description
+                        .toLowerCase()
+                        .includes(search);
+
+
+                return (
+                    categoryMatch
+                    &&
+                    searchMatch
+                );
+
+            }
+        );
+
+
+    document.getElementById(
+        "catalogCount"
+    ).textContent =
+        ` — ${filtered.length} listing(s)`;
+
+
+    const container =
+        document.getElementById(
+            "catalogProducts"
+        );
+
+
+    if (!filtered.length) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+                No listings found.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        filtered
+            .map(productCard)
+            .join("");
+
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+   ===================================================== */
+
+function productCard(product) {
+
+    let image;
+
+
+    if (product.image) {
+
+        image = `
+
+            <img
+                src="${escapeHTML(
+                    product.image
+                )}"
+
+                alt="${escapeHTML(
+                    product.name
+                )}">
+
+        `;
+
+    } else {
+
+        image =
+            categoryIcon(
+                product.category
+            );
+
+    }
+
+
+    const rating =
+        getRating(product);
+
+
+    return `
+
+        <div class="product">
+
+
+            <div class="product-image">
+
+                ${image}
+
+            </div>
+
+
+            <div class="product-info">
+
+
+                <div class="product-category">
+
+                    ${escapeHTML(
+                        product.category
+                    )}
+
+                </div>
+
+
+                <div class="product-name">
+
+                    ${escapeHTML(
+                        product.name
+                    )}
+
+                </div>
+
+
+                <div class="product-description">
+
+                    ${escapeHTML(
+                        product.description
+                    )}
+
+                </div>
+
+
+                <div class="product-footer">
+
+
+                    <span class="rating">
+
+                        ${
+                            rating
+                            ? "★ " + rating
+                            : "No reviews"
+                        }
+
+                    </span>
+
+
+                    <button
+                        class="btn"
+                        onclick="openProduct(
+                            ${product.id}
+                        )">
+
+                        View
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   OPEN PRODUCT
+   ===================================================== */
+
+function openProduct(id) {
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+
+    if (!product) return;
+
+
+    document
+        .getElementById(
+            "modalProductTitle"
+        )
+        .textContent =
+        product.name;
+
+
+    const reviews =
+        product.reviews
+        || [];
+
+
+    let reviewsHTML;
+
+
+    if (!reviews.length) {
+
+        reviewsHTML = `
+
+            <div class="empty">
+                No reviews yet.
+            </div>
+
+        `;
+
+    } else {
+
+        reviewsHTML =
+            reviews
+                .map(
+                    review => `
+
+                    <div class="review">
+
+
+                        <div class="review-top">
+
+                            <span
+                                class="review-user">
+
+                                ${escapeHTML(
+                                    review.username
+                                )}
+
+                            </span>
+
+
+                            <span
+                                class="review-date">
+
+                                ${escapeHTML(
+                                    review.date
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="review-stars">
+
+                            ${"★".repeat(
+                                review.stars
+                            )}
+
+                            ${"☆".repeat(
+                                5 -
+                                review.stars
+                            )}
+
+                        </div>
+
+
+                        <div
+                            class="review-text">
+
+                            ${escapeHTML(
+                                review.text
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+                `
+                )
+                .join("");
+
+    }
+
+
+    let reviewForm;
+
+
+    if (currentUser) {
+
+        reviewForm = `
+
+            <br>
+
+
+            <div class="panel">
+
+
+                <div class="panel-title">
+
+                    Leave a Review
+
+                </div>
+
+
+                <div class="panel-body">
+
+
+                    <form
+                        onsubmit="
+                            submitReview(
+                                event,
+                                ${product.id}
+                            )
+                        ">
+
+
+                        <div class="form-row">
+
+                            <label>
+                                Rating
+                            </label>
+
+
+                            <select
+                                id="reviewStars">
+
+                                <option value="5">
+                                    5 — Excellent
+                                </option>
+
+                                <option value="4">
+                                    4 — Good
+                                </option>
+
+                                <option value="3">
+                                    3 — Average
+                                </option>
+
+                                <option value="2">
+                                    2 — Poor
+                                </option>
+
+                                <option value="1">
+                                    1 — Bad
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <label>
+                                Review
+                            </label>
+
+
+                            <textarea
+                                id="reviewText"
+                                maxlength="500"
+                                required>
+                            </textarea>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-green">
+
+                            Submit Review
+
+                        </button>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+        `;
+
+    } else {
+
+        reviewForm = `
+
+            <div class="notice">
+
+                <a
+                    href="#"
+                    onclick="
+                        closeProduct();
+                        showPage('login')
+                    ">
+
+                    Login
+
+                </a>
+
+                to leave a review.
+
+            </div>
+
+        `;
+
+    }
+
+
+    document
+        .getElementById(
+            "modalProductContent"
+        )
+        .innerHTML = `
+
+
+        <div
+            class="product-image"
+            style="
+                height:220px;
+                margin-bottom:15px;
+            ">
+
+            ${
+                product.image
+
+                ?
+
+                `<img
+                    src="${escapeHTML(
+                        product.image
+                    )}"
+
+                    alt="${escapeHTML(
+                        product.name
+                    )}">`
+
+                :
+
+                categoryIcon(
+                    product.category
+                )
+            }
+
+        </div>
+
+
+        <div
+            class="product-category">
+
+            ${escapeHTML(
+                product.category
+            )}
+
+        </div>
+
+
+        <p
+            style="
+                color:#899289;
+                line-height:1.7;
+            ">
+
+            ${escapeHTML(
+                product.description
+            )}
+
+        </p>
+
+
+        <br>
+
+
+        <div class="panel">
+
+
+            <div class="panel-title">
+                Reviews
+            </div>
+
+
+            <div class="panel-body">
+
+                ${reviewsHTML}
+
+            </div>
+
+
+        </div>
+
+
+        ${reviewForm}
+
+    `;
+
+
+    document
+        .getElementById(
+            "productModal"
+        )
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   CLOSE PRODUCT
+   ===================================================== */
+
+function closeProduct() {
+
+    document
+        .getElementById(
+            "productModal"
+        )
+        .classList.remove("show");
+
+}
+
+
+function closeModalOutside(event) {
+
+    if (
+        event.target.id
+        ===
+        "productModal"
+    ) {
+
+        closeProduct();
+
+    }
+
+}
+
+
+/* =====================================================
+   REVIEWS
+   ===================================================== */
+
+function submitReview(
+    event,
+    productId
+) {
+
+    event.preventDefault();
+
+
+    if (!currentUser) {
+
+        alert(
+            "Please login first."
+        );
+
+        return;
+
+    }
+
+
+    const product =
+        products.find(
+            p =>
+                p.id === productId
+        );
+
+
+    if (!product) return;
+
+
+    const stars =
+        Number(
+            document
+                .getElementById(
+                    "reviewStars"
+                )
+                .value
+        );
+
+
+    const text =
+        document
+            .getElementById(
+                "reviewText"
+            )
+            .value
+            .trim();
+
+
+    if (!text) return;
+
+
+    if (!product.reviews) {
+
+        product.reviews = [];
+
+    }
+
+
+    product.reviews.push({
+
+        username:
+            currentUser.username,
+
+        stars,
+
+        text,
+
+        date:
+            new Date()
+                .toLocaleDateString()
+
+    });
+
+
+    saveProducts();
+
+
+    closeProduct();
+
+
+    renderHome();
+
+    renderCatalog();
+
+
+    alert(
+        "Review submitted."
+    );
+
+}
+
+
+/* =====================================================
+   ADD PRODUCT
+   ===================================================== */
+
+function addProduct(event) {
+
+    event.preventDefault();
+
+
+    if (!isAdmin()) {
+
+        alert(
+            "Administrator access required."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        document
+            .getElementById(
+                "newProductName"
+            )
+            .value
+            .trim();
+
+
+    const category =
+        document
+            .getElementById(
+                "newProductCategory"
+            )
+            .value;
+
+
+    const description =
+        document
+            .getElementById(
+                "newProductDescription"
+            )
+            .value
+            .trim();
+
+
+    const image =
+        document
+            .getElementById(
+                "newProductImage"
+            )
+            .value
+            .trim();
+
+
+    products.unshift({
 
         id: Date.now(),
 
@@ -1079,188 +2963,506 @@
 
         reviews: []
 
-      };
-
-      products.unshift(newProduct);
-
-      saveProducts();
-
-      event.target.reset();
-
-      renderProducts();
-
-      renderAdminList();
-
-      alert("Product added!");
-    }
-
-
-    /*
-      ========================================
-      ADMIN PRODUCT LIST
-      ========================================
-    */
-
-    function renderAdminList() {
-
-      const list =
-        document.getElementById("adminList");
-
-      if (!products.length) {
-
-        list.innerHTML = `
-          <p style="color:#8e9aa8;margin-top:15px;">
-            No products.
-          </p>
-        `;
-
-        return;
-      }
-
-      list.innerHTML = products.map(product => `
-
-        <div class="admin-row">
-
-          <div>
-            <strong>${escapeHTML(product.name)}</strong>
-
-            <div style="
-              color:#8e9aa8;
-              font-size:12px;
-              margin-top:3px;
-            ">
-              ${escapeHTML(product.category)}
-            </div>
-          </div>
-
-          <button
-            class="delete-btn"
-            onclick="deleteProduct(${product.id})"
-          >
-            Delete
-          </button>
-
-        </div>
-
-      `).join("");
-    }
-
-
-    /*
-      ========================================
-      DELETE PRODUCT
-      ========================================
-    */
-
-    function deleteProduct(id) {
-
-      const product =
-        products.find(p => p.id === id);
-
-      if (!product) return;
-
-      if (!confirm(
-        `Delete "${product.name}"?`
-      )) {
-        return;
-      }
-
-      products =
-        products.filter(p => p.id !== id);
-
-      saveProducts();
-
-      renderProducts();
-
-      renderAdminList();
-    }
-
-
-    /*
-      ========================================
-      HELPERS
-      ========================================
-    */
-
-    function getAverageRating(product) {
-
-      if (!product.reviews || !product.reviews.length) {
-        return null;
-      }
-
-      const total =
-        product.reviews.reduce(
-          (sum, review) => sum + Number(review.stars),
-          0
-        );
-
-      return (total / product.reviews.length).toFixed(1);
-    }
-
-
-    function getEmoji(category) {
-
-      const emojis = {
-
-        Electronics: "🎧",
-
-        Tools: "🛠️",
-
-        Cannabis: "🌿",
-
-        Flower: "🌸",
-
-        Vapes: "💨"
-
-      };
-
-      return emojis[category] || "📦";
-    }
-
-
-    function escapeHTML(value) {
-
-      return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-
-    function closeModal(id) {
-
-      document
-        .getElementById(id)
-        .classList.remove("show");
-    }
-
-
-    /*
-      Close modal by clicking outside it.
-    */
-
-    document.querySelectorAll(".modal-bg").forEach(bg => {
-
-      bg.addEventListener("click", event => {
-
-        if (event.target === bg) {
-          bg.classList.remove("show");
-        }
-
-      });
-
     });
 
 
+    saveProducts();
+
+
+    event.target.reset();
+
+
+    alert(
+        "Product added."
+    );
+
+
+    renderHome();
+
+
+    showPage("admin");
+
+}
+
+
+/* =====================================================
+   ADMIN DASHBOARD
+   ===================================================== */
+
+function renderAdmin() {
+
+    if (!isAdmin()) return;
+
+
+    renderUsers();
+
+    renderAdminProducts();
+
+}
+
+
+/* =====================================================
+   USERS
+   ===================================================== */
+
+function renderUsers() {
+
+    const table =
+        document.getElementById(
+            "usersTable"
+        );
+
+
+    table.innerHTML =
+        users
+            .map(
+                (user, index) => `
+
+                <tr>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            user.username
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+
+                        <select
+                            class="status-select"
+
+                            onchange="
+                                changeStatus(
+                                    ${index},
+                                    this.value
+                                )
+                            ">
+
+
+                            <option
+                                value="Member"
+                                ${
+                                    user.status
+                                    === "Member"
+                                    ? "selected"
+                                    : ""
+                                }>
+
+                                Member
+
+                            </option>
+
+
+                            <option
+                                value="Approved Seller"
+                                ${
+                                    user.status
+                                    ===
+                                    "Approved Seller"
+                                    ? "selected"
+                                    : ""
+                                }>
+
+                                Approved Seller
+
+                            </option>
+
+
+                            <option
+                                value="Admin"
+                                ${
+                                    user.status
+                                    === "Admin"
+                                    ? "selected"
+                                    : ""
+                                }>
+
+                                Admin
+
+                            </option>
+
+
+                            <option
+                                value="Suspended"
+                                ${
+                                    user.status
+                                    === "Suspended"
+                                    ? "selected"
+                                    : ""
+                                }>
+
+                                Suspended
+
+                            </option>
+
+
+                        </select>
+
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            user.joined
+                        )}
+
+                    </td>
+
+
+                </tr>
+
+            `
+            )
+            .join("");
+
+}
+
+
+/* =====================================================
+   CHANGE USER STATUS
+
+   THIS ALLOWS ADMINS TO MAKE OTHER USERS ADMIN
+   ===================================================== */
+
+function changeStatus(
+    index,
+    status
+) {
+
+    if (!isAdmin()) {
+
+        alert(
+            "Administrator access required."
+        );
+
+        return;
+
+    }
+
+
+    const targetUser =
+        users[index];
+
+
+    if (!targetUser) return;
+
+
     /*
-      START
+       Prevent an admin from accidentally
+       removing their own admin privileges.
     */
 
-    renderProducts();
+    if (
+        targetUser.username
+        ===
+        currentUser.username
+        &&
+        status !== "Admin"
+    ) {
 
-  </script>
+        alert(
+            "You cannot remove your own admin status."
+        );
+
+
+        renderAdmin();
+
+
+        return;
+
+    }
+
+
+    targetUser.status = status;
+
+
+    saveUsers();
+
+
+    /*
+       Update current user's copy if
+       they are the account being edited.
+    */
+
+    if (
+        currentUser.username
+        ===
+        targetUser.username
+    ) {
+
+        currentUser =
+            targetUser;
+
+
+        localStorage.setItem(
+            "silktrail_currentUser",
+            JSON.stringify(
+                currentUser
+            )
+        );
+
+    }
+
+
+    updateUserArea();
+
+
+    renderAdmin();
+
+
+    alert(
+        targetUser.username
+        +
+        " is now "
+        +
+        status
+        +
+        "."
+    );
+
+}
+
+
+/* =====================================================
+   ADMIN PRODUCTS
+   ===================================================== */
+
+function renderAdminProducts() {
+
+    const table =
+        document.getElementById(
+            "adminProductsTable"
+        );
+
+
+    table.innerHTML =
+        products
+            .map(
+                product => `
+
+                <tr>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            product.name
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            product.category
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                                deleteProduct(
+                                    ${product.id}
+                                )
+                            ">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+
+                </tr>
+
+            `
+            )
+            .join("");
+
+}
+
+
+/* =====================================================
+   DELETE PRODUCT
+   ===================================================== */
+
+function deleteProduct(id) {
+
+    if (!isAdmin()) return;
+
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+
+    if (!product) return;
+
+
+    if (
+        !confirm(
+            `Delete "${product.name}"?`
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    products =
+        products.filter(
+            p => p.id !== id
+        );
+
+
+    saveProducts();
+
+
+    renderHome();
+
+    renderCatalog();
+
+    renderAdmin();
+
+}
+
+
+/* =====================================================
+   RATING
+   ===================================================== */
+
+function getRating(product) {
+
+    if (
+        !product.reviews
+        ||
+        !product.reviews.length
+    ) {
+
+        return null;
+
+    }
+
+
+    const total =
+        product.reviews.reduce(
+            (
+                sum,
+                review
+            ) =>
+                sum
+                +
+                Number(
+                    review.stars
+                ),
+            0
+        );
+
+
+    return (
+        total
+        /
+        product.reviews.length
+    ).toFixed(1);
+
+}
+
+
+/* =====================================================
+   CATEGORY ICON
+   ===================================================== */
+
+function categoryIcon(
+    category
+) {
+
+    const icons = {
+
+        Electronics: "▣",
+
+        Tools: "⚒",
+
+        Cannabis: "✦",
+
+        Flower: "✿",
+
+        Vapes: "◈"
+
+    };
+
+
+    return (
+        icons[category]
+        ||
+        "□"
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   START SITE
+   ===================================================== */
+
+updateUserArea();
+
+renderHome();
+
+renderCatalog();
+
+</script>
 
 </body>
 </html>
