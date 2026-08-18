@@ -4,153 +4,351 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DetroitDistribution</title>
+  <title>DetroitDistribution // MENU</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&display=swap');
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --green: #00ff66;
+      --dark-green: #00b84a;
+      --black: #050505;
+      --dark: #0a0d0b;
+      --gray: #101510;
+      --text: #d7ffe4;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #222;
-      background: #f4f4f4;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,102,.08), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(0,255,102,.05), transparent 25%),
+        #050505;
+
+      color: var(--text);
+      font-family: "Space Mono", monospace;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
+    /* SCANLINES */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.015),
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    }
+
     /* HEADER */
+
     header {
-      background: #2563eb;
-      color: white;
-      padding: 18px 5%;
+      border-bottom: 1px solid rgba(0,255,102,.35);
+      background: rgba(5,5,5,.95);
+      padding: 20px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 0 25px rgba(0,255,102,.08);
     }
 
-    /* LOGO */
-    header h1 {
+    .logo {
+      color: var(--green);
+      font-family: "Share Tech Mono", monospace;
       font-size: 24px;
-      white-space: nowrap;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,255,102,.7);
     }
 
-    /* NAVIGATION */
+    .logo::before {
+      content: "// ";
+      color: #777;
+    }
+
     nav {
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 6px;
-      flex-wrap: wrap;
+      gap: 8px;
     }
 
     nav a {
-      color: white;
+      color: #aaa;
       text-decoration: none;
-      padding: 9px 13px;
-      border-radius: 6px;
-      font-size: 15px;
-      transition: background 0.2s ease;
-      white-space: nowrap;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      transition: .2s;
     }
 
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
+    nav a:hover,
+    nav a.active {
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(0,255,102,.06);
+      box-shadow: 0 0 12px rgba(0,255,102,.15);
     }
 
-    /* HERO */
-    .hero {
-      min-height: calc(100vh - 80px);
+    /* MAIN */
+
+    main {
+      width: min(1200px, 92%);
+      margin: auto;
+      padding: 60px 0 100px;
+    }
+
+    .terminal-line {
+      color: #555;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .terminal-line span {
+      color: var(--green);
+    }
+
+    .title {
+      font-family: "Share Tech Mono", monospace;
+      font-size: clamp(48px, 9vw, 100px);
+      color: white;
+      letter-spacing: 8px;
+      line-height: 1;
+      margin-bottom: 15px;
+      text-shadow:
+        3px 0 var(--green),
+        0 0 25px rgba(0,255,102,.3);
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 50px;
+      max-width: 650px;
+    }
+
+    .subtitle span {
+      color: var(--green);
+    }
+
+    /* PRODUCT GRID */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    /* PRODUCT CARD */
+
+    .product {
+      background: linear-gradient(
+        145deg,
+        #0d120e,
+        #070907
+      );
+
+      border: 1px solid #1d3324;
+      position: relative;
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .product:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 20px rgba(0,255,102,.12),
+        inset 0 0 20px rgba(0,255,102,.03);
+    }
+
+    /* CORNER MARKERS */
+
+    .product::before,
+    .product::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      z-index: 2;
+    }
+
+    .product::before {
+      top: 0;
+      left: 0;
+      border-top: 2px solid var(--green);
+      border-left: 2px solid var(--green);
+    }
+
+    .product::after {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid var(--green);
+      border-right: 2px solid var(--green);
+    }
+
+    /* IMAGE PLACEHOLDER */
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0,255,102,.04),
+          rgba(0,0,0,.7)
+        );
+
+      border-bottom: 1px solid #1d3324;
+
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: white;
+
+      color: #304936;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 2px;
     }
 
-    .hero h2 {
-      font-size: clamp(36px, 8vw, 56px);
-      margin-bottom: 18px;
+    .product-image::after {
+      content: "[ IMAGE PLACEHOLDER ]";
     }
 
-    .hero p {
-      font-size: clamp(17px, 4vw, 21px);
-      color: #666;
-      max-width: 650px;
-      line-height: 1.6;
+    /* PRODUCT INFO */
+
+    .product-info {
+      padding: 22px;
+    }
+
+    .product-number {
+      color: #445c4a;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      color: white;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 25px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .product-description {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
+      min-height: 42px;
+      margin-bottom: 20px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed #25402d;
+      padding-top: 15px;
+    }
+
+    .price {
+      color: var(--green);
+      font-family: "Share Tech Mono", monospace;
+      font-size: 22px;
+      text-shadow: 0 0 8px rgba(0,255,102,.5);
+    }
+
+    .status {
+      color: #48614e;
+      font-size: 10px;
     }
 
     /* FOOTER */
+
     footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
+      border-top: 1px solid #17271c;
+      padding: 25px 5%;
+      color: #444;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer span {
+      color: var(--green);
     }
 
     /* MOBILE */
+
     @media (max-width: 700px) {
 
       header {
         flex-direction: column;
-        padding: 18px 15px;
-        gap: 12px;
-      }
-
-      header h1 {
-        font-size: 23px;
+        gap: 15px;
       }
 
       nav {
         width: 100%;
         justify-content: center;
-        gap: 5px;
+        flex-wrap: wrap;
       }
 
       nav a {
-        padding: 9px 10px;
-        font-size: 14px;
+        font-size: 12px;
       }
 
-      .hero {
-        min-height: calc(100vh - 125px);
-        padding: 50px 20px;
+      main {
+        padding-top: 40px;
       }
 
-      .hero h2 {
-        font-size: 38px;
+      .title {
+        font-size: 52px;
+        letter-spacing: 4px;
       }
 
-      .hero p {
-        font-size: 17px;
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .product-name {
+        font-size: 22px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
       }
     }
 
-    /* SMALL PHONES */
+    /* VERY SMALL PHONES */
+
     @media (max-width: 400px) {
 
-      nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
+      .logo {
+        font-size: 19px;
+      }
+
+      .title {
+        font-size: 43px;
       }
 
       nav a {
-        text-align: center;
-        padding: 10px 5px;
-      }
-
-      .hero h2 {
-        font-size: 34px;
+        padding: 7px 8px;
       }
     }
   </style>
@@ -159,34 +357,287 @@
 <body>
 
   <!-- HEADER -->
+
   <header>
 
-    <h1>DetroitDistribution</h1>
+    <div class="logo">
+      DetroitDistribution
+    </div>
 
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="cannabis.html">Cannabis</a>
-      <a href="electronics.html">Electronics</a>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="cannabis.html" class="active">CANNABIS</a>
+      <a href="electronics.html">ELECTRONICS</a>
     </nav>
 
   </header>
 
-  <!-- HOME PAGE -->
-  <main class="hero">
 
-    <h2>Welcome to DetroitDistribution</h2>
+  <!-- MENU -->
 
-    <p>
-      Your destination for quality products and distribution.
-      Explore our website using the navigation above.
+  <main>
+
+    <div class="terminal-line">
+      SYSTEM:// <span>ACCESSING MENU...</span>
+    </div>
+
+    <h1 class="title">MENU</h1>
+
+    <p class="subtitle">
+      DETROIT DISTRIBUTION // PRODUCT DATABASE
+      <br>
+      <span>STATUS: ONLINE</span> //
+      SELECT A PRODUCT TO VIEW DETAILS
     </p>
+
+
+    <div class="menu-grid">
+
+
+      <!-- PRODUCT 01 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_001
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 02 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_002
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 03 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_003
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 04 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_004
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 05 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_005
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 06 -->
+
+      <div class="product">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <div class="product-number">
+            PRODUCT_006
+          </div>
+
+          <h2 class="product-name">
+            PRODUCT NAME
+          </h2>
+
+          <p class="product-description">
+            YOUR PRODUCT DESCRIPTION GOES HERE.
+            ADD DETAILS ABOUT THIS PRODUCT.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              $00.00
+            </div>
+
+            <div class="status">
+              AVAILABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
 
   </main>
 
+
   <!-- FOOTER -->
+
   <footer>
-    <p>&copy; 2026 DetroitDistribution. All rights reserved.</p>
+    <div>
+      DETROITDISTRIBUTION // <span>ONLINE</span>
+    </div>
+
+    <div>
+      SYSTEM_2026
+    </div>
   </footer>
 
 </body>
