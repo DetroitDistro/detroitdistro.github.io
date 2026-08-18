@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>DetroitDistribution // MENU</title>
+  <title>MarketHub — Product Catalog</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:wght@400;700&display=swap');
+    :root {
+      --bg: #080b0f;
+      --panel: #11161d;
+      --panel2: #171d25;
+      --border: #27303a;
+      --text: #f4f7fa;
+      --muted: #8e9aa8;
+      --green: #35d07f;
+      --green-dark: #1d9c5a;
+      --red: #ff5c6c;
+      --gold: #ffc857;
+      --blue: #5da9ff;
+    }
 
     * {
       box-sizing: border-box;
@@ -15,340 +26,475 @@
       padding: 0;
     }
 
-    :root {
-      --green: #00ff66;
-      --dark-green: #00b84a;
-      --black: #050505;
-      --dark: #0a0d0b;
-      --gray: #101510;
-      --text: #d7ffe4;
-    }
-
     body {
+      font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at 20% 20%, rgba(0,255,102,.08), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(0,255,102,.05), transparent 25%),
-        #050505;
-
+        radial-gradient(circle at 15% 10%, rgba(53,208,127,.08), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(93,169,255,.07), transparent 28%),
+        var(--bg);
       color: var(--text);
-      font-family: "Space Mono", monospace;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* SCANLINES */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.015),
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 4px
-      );
+    button, input, select, textarea {
+      font: inherit;
     }
 
-    /* HEADER */
+    button {
+      cursor: pointer;
+    }
 
-    header {
-      border-bottom: 1px solid rgba(0,255,102,.35);
-      background: rgba(5,5,5,.95);
-      padding: 20px 5%;
+    /* NAV */
+
+    nav {
+      height: 72px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,11,15,.88);
+      backdrop-filter: blur(14px);
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 0 25px rgba(0,255,102,.08);
+      z-index: 50;
     }
 
     .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
       color: var(--green);
-      font-family: "Share Tech Mono", monospace;
-      font-size: 24px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0,255,102,.7);
     }
 
-    .logo::before {
-      content: "// ";
-      color: #777;
-    }
-
-    nav {
+    .nav-right {
       display: flex;
-      gap: 8px;
+      gap: 12px;
+      align-items: center;
     }
 
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      padding: 8px 12px;
-      border: 1px solid transparent;
+    .admin-button {
+      background: var(--green);
+      color: #06140c;
+      border: 0;
+      padding: 10px 17px;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    .admin-button:hover {
+      background: #55e996;
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 75px 24px 45px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      color: var(--green);
+      border: 1px solid rgba(53,208,127,.3);
+      background: rgba(53,208,127,.07);
+      padding: 7px 13px;
+      border-radius: 50px;
       font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* SEARCH */
+
+    .search-area {
+      max-width: 900px;
+      margin: 10px auto 45px;
+      padding: 0 24px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+    }
+
+    .search-icon {
+      padding: 0 13px;
+      font-size: 19px;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: white;
+      padding: 14px 5px;
+      font-size: 16px;
+    }
+
+    /* FILTERS */
+
+    .filters {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px 28px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      background: var(--panel);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 9px;
       transition: .2s;
     }
 
-    nav a:hover,
-    nav a.active {
+    .filter:hover,
+    .filter.active {
+      background: rgba(53,208,127,.12);
       color: var(--green);
-      border-color: var(--green);
-      background: rgba(0,255,102,.06);
-      box-shadow: 0 0 12px rgba(0,255,102,.15);
+      border-color: rgba(53,208,127,.4);
     }
 
-    /* MAIN */
+    /* PRODUCTS */
 
-    main {
-      width: min(1200px, 92%);
+    .products-wrap {
+      max-width: 1200px;
       margin: auto;
-      padding: 60px 0 100px;
+      padding: 0 24px 80px;
     }
 
-    .terminal-line {
-      color: #555;
-      font-size: 12px;
-      margin-bottom: 10px;
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
     }
 
-    .terminal-line span {
-      color: var(--green);
+    .section-heading h2 {
+      font-size: 22px;
     }
 
-    .title {
-      font-family: "Share Tech Mono", monospace;
-      font-size: clamp(48px, 9vw, 100px);
-      color: white;
-      letter-spacing: 8px;
-      line-height: 1;
-      margin-bottom: 15px;
-      text-shadow:
-        3px 0 var(--green),
-        0 0 25px rgba(0,255,102,.3);
+    #resultCount {
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .subtitle {
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 50px;
-      max-width: 650px;
-    }
-
-    .subtitle span {
-      color: var(--green);
-    }
-
-    /* PRODUCT GRID */
-
-    .menu-grid {
+    .products {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
-
-    /* PRODUCT CARD */
 
     .product {
-      background: linear-gradient(
-        145deg,
-        #0d120e,
-        #070907
-      );
-
-      border: 1px solid #1d3324;
-      position: relative;
+      background: linear-gradient(145deg, var(--panel), #0d1116);
+      border: 1px solid var(--border);
+      border-radius: 15px;
       overflow: hidden;
       transition: .25s;
     }
 
     .product:hover {
-      border-color: var(--green);
       transform: translateY(-4px);
-      box-shadow:
-        0 0 20px rgba(0,255,102,.12),
-        inset 0 0 20px rgba(0,255,102,.03);
+      border-color: #3a4652;
+      box-shadow: 0 15px 35px rgba(0,0,0,.25);
     }
-
-    /* CORNER MARKERS */
-
-    .product::before,
-    .product::after {
-      content: "";
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      z-index: 2;
-    }
-
-    .product::before {
-      top: 0;
-      left: 0;
-      border-top: 2px solid var(--green);
-      border-left: 2px solid var(--green);
-    }
-
-    .product::after {
-      bottom: 0;
-      right: 0;
-      border-bottom: 2px solid var(--green);
-      border-right: 2px solid var(--green);
-    }
-
-    /* IMAGE PLACEHOLDER */
 
     .product-image {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0,255,102,.04),
-          rgba(0,0,0,.7)
-        );
-
-      border-bottom: 1px solid #1d3324;
-
+      height: 210px;
       display: flex;
-      justify-content: center;
       align-items: center;
-
-      color: #304936;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 13px;
-      letter-spacing: 2px;
+      justify-content: center;
+      font-size: 65px;
+      background:
+        radial-gradient(circle at center, rgba(53,208,127,.13), transparent 60%),
+        #0d1217;
+      overflow: hidden;
     }
 
-    .product-image::after {
-      content: "[ IMAGE PLACEHOLDER ]";
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    /* PRODUCT INFO */
-
-    .product-info {
-      padding: 22px;
+    .product-body {
+      padding: 19px;
     }
 
-    .product-number {
-      color: #445c4a;
-      font-size: 11px;
-      margin-bottom: 8px;
-    }
-
-    .product-name {
-      color: white;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 25px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+    .category {
+      color: var(--green);
       text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
 
-    .product-description {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.7;
-      min-height: 42px;
-      margin-bottom: 20px;
+    .product h3 {
+      font-size: 19px;
+      margin: 7px 0;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      min-height: 44px;
     }
 
     .product-bottom {
+      margin-top: 17px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px dashed #25402d;
-      padding-top: 15px;
     }
 
-    .price {
+    .rating {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .view-button {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .view-button:hover {
+      border-color: var(--green);
       color: var(--green);
-      font-family: "Share Tech Mono", monospace;
-      font-size: 22px;
-      text-shadow: 0 0 8px rgba(0,255,102,.5);
     }
 
-    .status {
-      color: #48614e;
-      font-size: 10px;
+    /* MODALS */
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-bg.show {
+      display: flex;
+    }
+
+    .modal {
+      background: #10151b;
+      border: 1px solid var(--border);
+      width: min(600px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 17px;
+      padding: 26px;
+      position: relative;
+      box-shadow: 0 25px 80px rgba(0,0,0,.5);
+    }
+
+    .close {
+      position: absolute;
+      right: 17px;
+      top: 14px;
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      font-size: 25px;
+    }
+
+    .modal h2 {
+      margin-bottom: 20px;
+    }
+
+    /* FORMS */
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #c8d0d8;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: #0b0f14;
+      color: white;
+      outline: 0;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .submit {
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--green);
+      color: #06140c;
+      font-weight: 800;
+    }
+
+    /* REVIEW */
+
+    .review {
+      border-top: 1px solid var(--border);
+      padding: 15px 0;
+    }
+
+    .review:first-child {
+      margin-top: 15px;
+    }
+
+    .review-name {
+      font-weight: 700;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      margin: 4px 0;
+    }
+
+    .review p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .review-form {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ADMIN */
+
+    .admin-note {
+      background: rgba(53,208,127,.08);
+      border: 1px solid rgba(53,208,127,.2);
+      color: #a8eac5;
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .admin-products {
+      margin-top: 25px;
+    }
+
+    .admin-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-top: 1px solid var(--border);
+      gap: 15px;
+    }
+
+    .delete-btn {
+      background: rgba(255,92,108,.1);
+      color: var(--red);
+      border: 1px solid rgba(255,92,108,.25);
+      padding: 7px 11px;
+      border-radius: 7px;
+    }
+
+    /* EMPTY */
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 70px 20px;
+      color: var(--muted);
     }
 
     /* FOOTER */
 
     footer {
-      border-top: 1px solid #17271c;
-      padding: 25px 5%;
-      color: #444;
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    footer span {
-      color: var(--green);
-    }
+    /* RESPONSIVE */
 
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      header {
-        flex-direction: column;
-        gap: 15px;
+    @media(max-width: 850px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
 
+    @media(max-width: 570px) {
       nav {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
+        padding: 0 18px;
       }
 
-      nav a {
-        font-size: 12px;
+      .hero {
+        padding-top: 55px;
       }
 
-      main {
-        padding-top: 40px;
+      h1 {
+        letter-spacing: -2px;
       }
 
-      .title {
-        font-size: 52px;
-        letter-spacing: 4px;
-      }
-
-      .menu-grid {
+      .products {
         grid-template-columns: 1fr;
-        gap: 20px;
       }
 
-      .product-name {
-        font-size: 22px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-
-    /* VERY SMALL PHONES */
-
-    @media (max-width: 400px) {
-
-      .logo {
-        font-size: 19px;
-      }
-
-      .title {
-        font-size: 43px;
-      }
-
-      nav a {
-        padding: 7px 8px;
+      .admin-button {
+        padding: 8px 11px;
       }
     }
   </style>
@@ -356,289 +502,765 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Market<span>Hub</span></div>
 
-  <header>
-
-    <div class="logo">
-      DetroitDistribution
+    <div class="nav-right">
+      <button class="admin-button" onclick="openAdmin()">
+        Admin
+      </button>
     </div>
+  </nav>
 
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="about.html">ABOUT</a>
-      <a href="cannabis.html" class="active">CANNABIS</a>
-      <a href="electronics.html">ELECTRONICS</a>
-    </nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">PRODUCT SHOWCASE</div>
 
-  </header>
+    <h1>Discover <span>Products.</span></h1>
 
-
-  <!-- MENU -->
-
-  <main>
-
-    <div class="terminal-line">
-      SYSTEM:// <span>ACCESSING MENU...</span>
-    </div>
-
-    <h1 class="title">MENU</h1>
-
-    <p class="subtitle">
-      DETROIT DISTRIBUTION // PRODUCT DATABASE
-      <br>
-      <span>STATUS: ONLINE</span> //
-      SELECT A PRODUCT TO VIEW DETAILS
+    <p>
+      Browse the catalog, search by name, explore categories,
+      and share your opinion through product reviews.
     </p>
-
-
-    <div class="menu-grid">
-
-
-      <!-- PRODUCT 01 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_001
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 02 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_002
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 03 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_003
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 04 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_004
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 05 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_005
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 06 -->
-
-      <div class="product">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <div class="product-number">
-            PRODUCT_006
-          </div>
-
-          <h2 class="product-name">
-            PRODUCT NAME
-          </h2>
-
-          <p class="product-description">
-            YOUR PRODUCT DESCRIPTION GOES HERE.
-            ADD DETAILS ABOUT THIS PRODUCT.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              $00.00
-            </div>
-
-            <div class="status">
-              AVAILABLE
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
+  </section>
+
+  <!-- SEARCH -->
+  <section class="search-area">
+    <div class="search-box">
+      <div class="search-icon">⌕</div>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Search products..."
+        oninput="renderProducts()"
+      >
     </div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter active" onclick="setCategory('All', this)">All</button>
+    <button class="filter" onclick="setCategory('Electronics', this)">Electronics</button>
+    <button class="filter" onclick="setCategory('Tools', this)">Tools</button>
+    <button class="filter" onclick="setCategory('Cannabis', this)">Cannabis</button>
+    <button class="filter" onclick="setCategory('Flower', this)">Flower</button>
+    <button class="filter" onclick="setCategory('Vapes', this)">Vapes</button>
+  </div>
+
+  <!-- PRODUCTS -->
+  <main class="products-wrap">
+
+    <div class="section-heading">
+      <h2>Product Catalog</h2>
+      <span id="resultCount"></span>
+    </div>
+
+    <div class="products" id="products"></div>
 
   </main>
 
-
-  <!-- FOOTER -->
-
   <footer>
-    <div>
-      DETROITDISTRIBUTION // <span>ONLINE</span>
-    </div>
-
-    <div>
-      SYSTEM_2026
-    </div>
+    MarketHub — Product showcase & community reviews
   </footer>
+
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-bg" id="productModal">
+    <div class="modal">
+      <button class="close" onclick="closeModal('productModal')">×</button>
+
+      <div id="productDetails"></div>
+    </div>
+  </div>
+
+
+  <!-- ADMIN MODAL -->
+  <div class="modal-bg" id="adminModal">
+    <div class="modal">
+
+      <button class="close" onclick="closeModal('adminModal')">×</button>
+
+      <h2>Admin Dashboard</h2>
+
+      <div class="admin-note">
+        You are the site administrator. Only the administrator can
+        add or delete products in this demo.
+      </div>
+
+      <form onsubmit="addProduct(event)">
+
+        <div class="form-group">
+          <label>Product Name</label>
+          <input id="productName" required placeholder="Example: Wireless Headphones">
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+
+          <select id="productCategory" required>
+            <option value="Electronics">Electronics</option>
+            <option value="Tools">Tools</option>
+            <option value="Cannabis">Cannabis</option>
+            <option value="Flower">Flower</option>
+            <option value="Vapes">Vapes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea
+            id="productDescription"
+            required
+            placeholder="Describe the product..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Image URL (optional)</label>
+          <input
+            id="productImage"
+            type="url"
+            placeholder="https://..."
+          >
+        </div>
+
+        <button class="submit" type="submit">
+          Add Product
+        </button>
+
+      </form>
+
+      <div class="admin-products">
+        <h3>Manage Products</h3>
+        <div id="adminList"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+
+    /*
+      ========================================
+      DEMO DATA
+      ========================================
+    */
+
+    let products = JSON.parse(
+      localStorage.getItem("marketHubProducts")
+    ) || [
+
+      {
+        id: 1,
+        name: "Wireless Headphones",
+        category: "Electronics",
+        description: "Premium wireless headphones with noise cancellation.",
+        image: "",
+        reviews: [
+          {
+            name: "Alex",
+            stars: 5,
+            text: "Great looking product."
+          }
+        ]
+      },
+
+      {
+        id: 2,
+        name: "Professional Tool Kit",
+        category: "Tools",
+        description: "Complete multi-piece tool kit for everyday projects.",
+        image: "",
+        reviews: []
+      },
+
+      {
+        id: 3,
+        name: "Premium Flower",
+        category: "Flower",
+        description: "Showcase listing for premium flower.",
+        image: "",
+        reviews: []
+      },
+
+      {
+        id: 4,
+        name: "Vape Showcase",
+        category: "Vapes",
+        description: "Example vape product listing for the catalog.",
+        image: "",
+        reviews: []
+      },
+
+      {
+        id: 5,
+        name: "Cannabis Showcase",
+        category: "Cannabis",
+        description: "Example cannabis catalog listing.",
+        image: "",
+        reviews: []
+      }
+
+    ];
+
+    let currentCategory = "All";
+    let currentProduct = null;
+
+
+    /*
+      ========================================
+      SAVE DATA
+      ========================================
+    */
+
+    function saveProducts() {
+      localStorage.setItem(
+        "marketHubProducts",
+        JSON.stringify(products)
+      );
+    }
+
+
+    /*
+      ========================================
+      CATEGORY FILTER
+      ========================================
+    */
+
+    function setCategory(category, button) {
+
+      currentCategory = category;
+
+      document.querySelectorAll(".filter").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      renderProducts();
+    }
+
+
+    /*
+      ========================================
+      RENDER PRODUCTS
+      ========================================
+    */
+
+    function renderProducts() {
+
+      const container = document.getElementById("products");
+
+      const search =
+        document.getElementById("search").value
+        .toLowerCase()
+        .trim();
+
+      let filtered = products.filter(product => {
+
+        const matchesCategory =
+          currentCategory === "All" ||
+          product.category === currentCategory;
+
+        const matchesSearch =
+          product.name.toLowerCase().includes(search) ||
+          product.description.toLowerCase().includes(search) ||
+          product.category.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+
+      });
+
+      document.getElementById("resultCount").textContent =
+        `${filtered.length} product${filtered.length === 1 ? "" : "s"}`;
+
+      if (!filtered.length) {
+
+        container.innerHTML = `
+          <div class="empty">
+            <h3>No products found</h3>
+            <p>Try another search or category.</p>
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = filtered.map(product => {
+
+        const average = getAverageRating(product);
+
+        const image = product.image
+          ? `<img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}">`
+          : getEmoji(product.category);
+
+        return `
+
+          <article class="product">
+
+            <div class="product-image">
+              ${image}
+            </div>
+
+            <div class="product-body">
+
+              <div class="category">
+                ${escapeHTML(product.category)}
+              </div>
+
+              <h3>
+                ${escapeHTML(product.name)}
+              </h3>
+
+              <p class="description">
+                ${escapeHTML(product.description)}
+              </p>
+
+              <div class="product-bottom">
+
+                <div class="rating">
+                  ${average
+                    ? `★ ${average}`
+                    : "☆ No reviews"}
+                </div>
+
+                <button
+                  class="view-button"
+                  onclick="viewProduct(${product.id})"
+                >
+                  View
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
+    }
+
+
+    /*
+      ========================================
+      PRODUCT DETAILS
+      ========================================
+    */
+
+    function viewProduct(id) {
+
+      currentProduct = products.find(p => p.id === id);
+
+      if (!currentProduct) return;
+
+      const reviews = currentProduct.reviews || [];
+
+      const reviewHTML = reviews.length
+
+        ? reviews.map(review => `
+
+            <div class="review">
+
+              <div class="review-name">
+                ${escapeHTML(review.name)}
+              </div>
+
+              <div class="review-stars">
+                ${"★".repeat(review.stars)}
+                ${"☆".repeat(5 - review.stars)}
+              </div>
+
+              <p>
+                ${escapeHTML(review.text)}
+              </p>
+
+            </div>
+
+          `).join("")
+
+        : `<p style="color:#8e9aa8;margin-top:15px;">
+            No reviews yet. Be the first.
+          </p>`;
+
+      document.getElementById("productDetails").innerHTML = `
+
+        <div class="product-image"
+             style="height:250px;border-radius:12px;margin-bottom:20px;">
+
+          ${
+            currentProduct.image
+            ? `<img src="${escapeHTML(currentProduct.image)}"
+                    alt="${escapeHTML(currentProduct.name)}">`
+            : getEmoji(currentProduct.category)
+          }
+
+        </div>
+
+        <div class="category">
+          ${escapeHTML(currentProduct.category)}
+        </div>
+
+        <h2>
+          ${escapeHTML(currentProduct.name)}
+        </h2>
+
+        <p style="color:#8e9aa8;line-height:1.7;">
+          ${escapeHTML(currentProduct.description)}
+        </p>
+
+        <h3 style="margin-top:28px;">
+          Reviews
+        </h3>
+
+        ${reviewHTML}
+
+        <div class="review-form">
+
+          <h3>Leave a Review</h3>
+
+          <form onsubmit="submitReview(event)">
+
+            <div class="form-group">
+              <label>Your Name</label>
+              <input id="reviewName" required maxlength="40">
+            </div>
+
+            <div class="form-group">
+
+              <label>Rating</label>
+
+              <select id="reviewStars">
+                <option value="5">★★★★★ — 5</option>
+                <option value="4">★★★★☆ — 4</option>
+                <option value="3">★★★☆☆ — 3</option>
+                <option value="2">★★☆☆☆ — 2</option>
+                <option value="1">★☆☆☆☆ — 1</option>
+              </select>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Review</label>
+
+              <textarea
+                id="reviewText"
+                required
+                maxlength="500"
+                placeholder="Write your review..."
+              ></textarea>
+
+            </div>
+
+            <button class="submit">
+              Post Review
+            </button>
+
+          </form>
+
+        </div>
+
+      `;
+
+      document
+        .getElementById("productModal")
+        .classList.add("show");
+    }
+
+
+    /*
+      ========================================
+      REVIEWS
+      ========================================
+    */
+
+    function submitReview(event) {
+
+      event.preventDefault();
+
+      if (!currentProduct) return;
+
+      const name =
+        document.getElementById("reviewName").value.trim();
+
+      const stars =
+        Number(document.getElementById("reviewStars").value);
+
+      const text =
+        document.getElementById("reviewText").value.trim();
+
+      currentProduct.reviews.push({
+        name,
+        stars,
+        text
+      });
+
+      saveProducts();
+
+      viewProduct(currentProduct.id);
+
+      renderProducts();
+    }
+
+
+    /*
+      ========================================
+      ADMIN
+      ========================================
+    */
+
+    function openAdmin() {
+
+      /*
+        DEMO ADMIN LOGIN
+
+        Change this password if you want.
+        Remember that this is NOT secure authentication
+        because this is a static GitHub Pages website.
+      */
+
+      const password = prompt("Admin password:");
+
+      if (password !== "admin123") {
+
+        if (password !== null) {
+          alert("Incorrect admin password.");
+        }
+
+        return;
+      }
+
+      document
+        .getElementById("adminModal")
+        .classList.add("show");
+
+      renderAdminList();
+    }
+
+
+    /*
+      ========================================
+      ADD PRODUCT
+      ========================================
+    */
+
+    function addProduct(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("productName").value.trim();
+
+      const category =
+        document.getElementById("productCategory").value;
+
+      const description =
+        document.getElementById("productDescription").value.trim();
+
+      const image =
+        document.getElementById("productImage").value.trim();
+
+      const newProduct = {
+
+        id: Date.now(),
+
+        name,
+
+        category,
+
+        description,
+
+        image,
+
+        reviews: []
+
+      };
+
+      products.unshift(newProduct);
+
+      saveProducts();
+
+      event.target.reset();
+
+      renderProducts();
+
+      renderAdminList();
+
+      alert("Product added!");
+    }
+
+
+    /*
+      ========================================
+      ADMIN PRODUCT LIST
+      ========================================
+    */
+
+    function renderAdminList() {
+
+      const list =
+        document.getElementById("adminList");
+
+      if (!products.length) {
+
+        list.innerHTML = `
+          <p style="color:#8e9aa8;margin-top:15px;">
+            No products.
+          </p>
+        `;
+
+        return;
+      }
+
+      list.innerHTML = products.map(product => `
+
+        <div class="admin-row">
+
+          <div>
+            <strong>${escapeHTML(product.name)}</strong>
+
+            <div style="
+              color:#8e9aa8;
+              font-size:12px;
+              margin-top:3px;
+            ">
+              ${escapeHTML(product.category)}
+            </div>
+          </div>
+
+          <button
+            class="delete-btn"
+            onclick="deleteProduct(${product.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      `).join("");
+    }
+
+
+    /*
+      ========================================
+      DELETE PRODUCT
+      ========================================
+    */
+
+    function deleteProduct(id) {
+
+      const product =
+        products.find(p => p.id === id);
+
+      if (!product) return;
+
+      if (!confirm(
+        `Delete "${product.name}"?`
+      )) {
+        return;
+      }
+
+      products =
+        products.filter(p => p.id !== id);
+
+      saveProducts();
+
+      renderProducts();
+
+      renderAdminList();
+    }
+
+
+    /*
+      ========================================
+      HELPERS
+      ========================================
+    */
+
+    function getAverageRating(product) {
+
+      if (!product.reviews || !product.reviews.length) {
+        return null;
+      }
+
+      const total =
+        product.reviews.reduce(
+          (sum, review) => sum + Number(review.stars),
+          0
+        );
+
+      return (total / product.reviews.length).toFixed(1);
+    }
+
+
+    function getEmoji(category) {
+
+      const emojis = {
+
+        Electronics: "🎧",
+
+        Tools: "🛠️",
+
+        Cannabis: "🌿",
+
+        Flower: "🌸",
+
+        Vapes: "💨"
+
+      };
+
+      return emojis[category] || "📦";
+    }
+
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function closeModal(id) {
+
+      document
+        .getElementById(id)
+        .classList.remove("show");
+    }
+
+
+    /*
+      Close modal by clicking outside it.
+    */
+
+    document.querySelectorAll(".modal-bg").forEach(bg => {
+
+      bg.addEventListener("click", event => {
+
+        if (event.target === bg) {
+          bg.classList.remove("show");
+        }
+
+      });
+
+    });
+
+
+    /*
+      START
+    */
+
+    renderProducts();
+
+  </script>
 
 </body>
 </html>
