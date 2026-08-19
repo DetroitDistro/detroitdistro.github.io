@@ -4,14 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SilkTrail Market</title>
+<title>TheDetroitDistro / DetroitDistributions</title>
 
 <style>
-
-/* =====================================================
-   GENERAL
-   ===================================================== */
-
 * {
     box-sizing: border-box;
 }
@@ -45,10 +40,7 @@ button {
     cursor: pointer;
 }
 
-
-/* =====================================================
-   HEADER
-   ===================================================== */
+/* HEADER */
 
 .header {
     background: #101510;
@@ -56,10 +48,10 @@ button {
 }
 
 .header-inner {
-    width: 960px;
+    width: 1000px;
     max-width: calc(100% - 20px);
     margin: auto;
-    min-height: 65px;
+    min-height: 72px;
 
     display: flex;
     align-items: center;
@@ -68,12 +60,21 @@ button {
 
 .logo {
     font-family: Georgia, serif;
-    font-size: 26px;
+    font-size: 23px;
     color: #a4cba4;
 }
 
 .logo span {
     color: #4d864d;
+}
+
+.logo-small {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    color: #637063;
+    letter-spacing: 1px;
+    margin-top: 3px;
 }
 
 .user-area {
@@ -85,10 +86,7 @@ button {
     color: #9db39d;
 }
 
-
-/* =====================================================
-   NAVIGATION
-   ===================================================== */
+/* NAV */
 
 .nav {
     background: #151a15;
@@ -96,7 +94,7 @@ button {
 }
 
 .nav-inner {
-    width: 960px;
+    width: 1000px;
     max-width: calc(100% - 20px);
     margin: auto;
 
@@ -109,7 +107,7 @@ button {
     color: #929b92;
     border: 0;
     border-right: 1px solid #292f29;
-    padding: 10px 15px;
+    padding: 10px 14px;
     font-size: 12px;
 }
 
@@ -118,21 +116,15 @@ button {
     color: #a8d2a8;
 }
 
-
-/* =====================================================
-   MAIN
-   ===================================================== */
+/* MAIN */
 
 .container {
-    width: 960px;
+    width: 1000px;
     max-width: calc(100% - 20px);
     margin: 18px auto 50px;
 }
 
-
-/* =====================================================
-   PANELS
-   ===================================================== */
+/* PANELS */
 
 .panel {
     background: #101410;
@@ -152,10 +144,7 @@ button {
     padding: 12px;
 }
 
-
-/* =====================================================
-   NOTICE
-   ===================================================== */
+/* NOTICE */
 
 .notice {
     background: #121a12;
@@ -166,10 +155,19 @@ button {
     line-height: 1.5;
 }
 
+.notice.warning {
+    background: #211c10;
+    border-color: #5c4c2c;
+    color: #c6ae72;
+}
 
-/* =====================================================
-   WELCOME
-   ===================================================== */
+.notice.danger {
+    background: #211010;
+    border-color: #633838;
+    color: #d79a9a;
+}
+
+/* WELCOME */
 
 .welcome {
     padding: 25px;
@@ -186,14 +184,11 @@ button {
 .welcome p {
     color: #7f897f;
     line-height: 1.7;
-    max-width: 650px;
+    max-width: 700px;
     margin: auto;
 }
 
-
-/* =====================================================
-   SEARCH
-   ===================================================== */
+/* SEARCH */
 
 .search-row {
     display: flex;
@@ -204,10 +199,7 @@ button {
     flex: 1;
 }
 
-
-/* =====================================================
-   INPUTS
-   ===================================================== */
+/* INPUTS */
 
 input,
 textarea,
@@ -230,10 +222,7 @@ textarea {
     resize: vertical;
 }
 
-
-/* =====================================================
-   BUTTONS
-   ===================================================== */
+/* BUTTONS */
 
 .btn {
     background: #252c25;
@@ -259,10 +248,13 @@ textarea {
     color: #d79a9a;
 }
 
+.btn-blue {
+    background: #202d38;
+    border-color: #405c70;
+    color: #a8c4d8;
+}
 
-/* =====================================================
-   CATEGORIES
-   ===================================================== */
+/* CATEGORIES */
 
 .categories {
     display: flex;
@@ -284,10 +276,28 @@ textarea {
     color: #a8c8a8;
 }
 
+.category-tree {
+    margin-top: 10px;
+}
 
-/* =====================================================
-   PRODUCTS
-   ===================================================== */
+.category-parent {
+    margin-bottom: 8px;
+}
+
+.category-parent-title {
+    color: #a9b8a9;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subcategory-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: 12px;
+}
+
+/* PRODUCTS */
 
 .product-list {
     display: grid;
@@ -343,7 +353,7 @@ textarea {
 .product-description {
     color: #747d74;
     line-height: 1.5;
-    height: 42px;
+    min-height: 42px;
     overflow: hidden;
 }
 
@@ -355,16 +365,25 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
 .rating {
     color: #9aa96c;
 }
 
+.price {
+    color: #a9cda9;
+    font-weight: bold;
+    margin-top: 7px;
+}
 
-/* =====================================================
-   MODALS
-   ===================================================== */
+.price-hidden {
+    color: #596159;
+    font-size: 11px;
+}
+
+/* MODALS */
 
 .modal-overlay {
     display: none;
@@ -385,7 +404,7 @@ textarea {
 }
 
 .modal {
-    width: 650px;
+    width: 700px;
     max-width: 100%;
     margin: auto;
 
@@ -422,10 +441,7 @@ textarea {
     padding: 15px;
 }
 
-
-/* =====================================================
-   FORMS
-   ===================================================== */
+/* FORMS */
 
 .form-row {
     margin-bottom: 12px;
@@ -443,10 +459,7 @@ textarea {
     width: 100%;
 }
 
-
-/* =====================================================
-   PROFILE
-   ===================================================== */
+/* PROFILE */
 
 .profile-header {
     display: flex;
@@ -495,10 +508,7 @@ textarea {
     font-size: 10px;
 }
 
-
-/* =====================================================
-   REVIEWS
-   ===================================================== */
+/* REVIEWS */
 
 .review {
     padding: 11px 0;
@@ -534,10 +544,7 @@ textarea {
     line-height: 1.5;
 }
 
-
-/* =====================================================
-   ADMIN TABLE
-   ===================================================== */
+/* ADMIN TABLE */
 
 .admin-table {
     width: 100%;
@@ -564,13 +571,10 @@ textarea {
     width: auto;
 }
 
-
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* FOOTER */
 
 .footer {
-    width: 960px;
+    width: 1000px;
     max-width: calc(100% - 20px);
 
     margin: auto;
@@ -584,10 +588,7 @@ textarea {
     font-size: 11px;
 }
 
-
-/* =====================================================
-   PAGES
-   ===================================================== */
+/* PAGES */
 
 .page {
     display: none;
@@ -603,10 +604,41 @@ textarea {
     color: #606960;
 }
 
+/* SUSPENDED */
 
-/* =====================================================
-   MOBILE
-   ===================================================== */
+#suspendedScreen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: #080808;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.suspended-box {
+    width: 600px;
+    max-width: 100%;
+
+    background: #151010;
+    border: 1px solid #633838;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.suspended-box h1 {
+    color: #d79a9a;
+    font-family: Georgia, serif;
+}
+
+/* MOBILE */
 
 @media(max-width: 700px) {
 
@@ -633,101 +665,83 @@ textarea {
         border-bottom: 1px solid #292f29;
     }
 
-}
+    .search-row {
+        flex-direction: column;
+    }
 
+}
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =====================================================
-     HEADER
+     SUSPENDED SCREEN
      ===================================================== -->
+
+<div id="suspendedScreen">
+    <div class="suspended-box">
+        <h1>Account Suspended</h1>
+
+        <p>
+            This account has been suspended by an administrator.
+        </p>
+
+        <p style="color:#777;">
+            You cannot access TheDetroitDistro / DetroitDistributions
+            while your account is suspended.
+        </p>
+
+        <button class="btn btn-red" onclick="forceLogout()">
+            Leave Site
+        </button>
+    </div>
+</div>
+
+<!-- HEADER -->
 
 <header class="header">
 
     <div class="header-inner">
 
         <div class="logo">
-            Silk<span>Trail</span>
+            TheDetroitDistro
+            <span>/ DetroitDistributions</span>
+
+            <span class="logo-small">
+                COMMUNITY PRODUCT SHOWCASE
+            </span>
         </div>
 
         <div
             class="user-area"
             id="userArea">
-
-            Guest
-            <br>
-
-            <a
-                href="#"
-                onclick="showPage('login')">
-                Login
-            </a>
-
-            /
-
-            <a
-                href="#"
-                onclick="showPage('register')">
-                Register
-            </a>
-
         </div>
 
     </div>
 
 </header>
 
-
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
+<!-- NAV -->
 
 <nav class="nav">
 
     <div class="nav-inner">
 
-        <button
-            onclick="showPage('home')">
+        <button onclick="showPage('home')">
             Home
         </button>
 
-        <button
-            onclick="showPage('catalog')">
+        <button onclick="showPage('catalog')">
             Catalog
         </button>
 
-        <button
-            onclick="showCategory('Electronics')">
-            Electronics
-        </button>
-
-        <button
-            onclick="showCategory('Tools')">
-            Tools
-        </button>
-
-        <button
-            onclick="showCategory('Cannabis')">
-            Cannabis
-        </button>
-
-        <button
-            onclick="showCategory('Flower')">
-            Flower
-        </button>
-
-        <button
-            onclick="showCategory('Vapes')">
-            Vapes
-        </button>
-
-        <button
-            onclick="showPage('profile')">
+        <button onclick="showPage('profile')">
             Profile
+        </button>
+
+        <button onclick="showPage('categories')">
+            Categories
         </button>
 
         <button
@@ -741,35 +755,26 @@ textarea {
 
 </nav>
 
-
-<!-- =====================================================
-     MAIN
-     ===================================================== -->
-
 <div class="container">
 
+<!-- HOME -->
 
-<!-- =====================================================
-     HOME
-     ===================================================== -->
-
-<section
-    id="page-home"
-    class="page active">
+<section id="page-home" class="page active">
 
     <div class="panel welcome">
 
         <h1>
-            Welcome to SilkTrail
+            Welcome to TheDetroitDistro
         </h1>
 
         <p>
-            Browse the catalog, search listings,
-            explore categories and leave reviews.
+            DetroitDistributions is a community product
+            showcase and review site.
+            There are no purchases, checkout systems,
+            or transaction functionality.
         </p>
 
     </div>
-
 
     <div class="panel">
 
@@ -798,7 +803,6 @@ textarea {
 
     </div>
 
-
     <div class="panel">
 
         <div class="panel-title">
@@ -807,44 +811,14 @@ textarea {
 
         <div class="panel-body">
 
-            <div class="categories">
-
-                <button
-                    class="category"
-                    onclick="showCategory('Electronics')">
-                    Electronics
-                </button>
-
-                <button
-                    class="category"
-                    onclick="showCategory('Tools')">
-                    Tools
-                </button>
-
-                <button
-                    class="category"
-                    onclick="showCategory('Cannabis')">
-                    Cannabis
-                </button>
-
-                <button
-                    class="category"
-                    onclick="showCategory('Flower')">
-                    Flower
-                </button>
-
-                <button
-                    class="category"
-                    onclick="showCategory('Vapes')">
-                    Vapes
-                </button>
-
+            <div
+                class="categories"
+                id="homeCategories">
             </div>
 
         </div>
 
     </div>
-
 
     <div class="panel">
 
@@ -865,14 +839,9 @@ textarea {
 
 </section>
 
+<!-- CATALOG -->
 
-<!-- =====================================================
-     CATALOG
-     ===================================================== -->
-
-<section
-    id="page-catalog"
-    class="page">
+<section id="page-catalog" class="page">
 
     <div class="panel">
 
@@ -892,31 +861,6 @@ textarea {
                 <select
                     id="catalogCategory"
                     onchange="renderCatalog()">
-
-                    <option value="All">
-                        All Categories
-                    </option>
-
-                    <option>
-                        Electronics
-                    </option>
-
-                    <option>
-                        Tools
-                    </option>
-
-                    <option>
-                        Cannabis
-                    </option>
-
-                    <option>
-                        Flower
-                    </option>
-
-                    <option>
-                        Vapes
-                    </option>
-
                 </select>
 
             </div>
@@ -924,7 +868,6 @@ textarea {
         </div>
 
     </div>
-
 
     <div class="panel">
 
@@ -946,176 +889,31 @@ textarea {
 
 </section>
 
+<!-- CATEGORIES -->
 
-<!-- =====================================================
-     LOGIN
-     ===================================================== -->
-
-<section
-    id="page-login"
-    class="page">
+<section id="page-categories" class="page">
 
     <div class="panel">
 
         <div class="panel-title">
-            Member Login
+            Categories & Subsections
         </div>
 
         <div class="panel-body">
 
-            <div class="notice">
-
-                Demo website:
-                accounts are stored locally
-                in the browser.
-
-                <br><br>
-
-                Do not use a real password.
-
+            <div
+                id="categoryTree">
             </div>
 
-
-            <form
-                onsubmit="login(event)">
-
-                <div class="form-row">
-
-                    <label>
-                        Username
-                    </label>
-
-                    <input
-                        id="loginUsername"
-                        required>
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <label>
-                        Password
-                    </label>
-
-                    <input
-                        id="loginPassword"
-                        type="password"
-                        required>
-
-                </div>
-
-
-                <button
-                    class="btn btn-green">
-                    Login
-                </button>
-
-            </form>
-
-
-            <br>
-
-            Don't have an account?
-
-            <a
-                href="#"
-                onclick="showPage('register')">
-                Register
-            </a>
-
         </div>
 
     </div>
 
 </section>
 
+<!-- PROFILE -->
 
-<!-- =====================================================
-     REGISTER
-     ===================================================== -->
-
-<section
-    id="page-register"
-    class="page">
-
-    <div class="panel">
-
-        <div class="panel-title">
-            Create Account
-        </div>
-
-        <div class="panel-body">
-
-            <form
-                onsubmit="register(event)">
-
-                <div class="form-row">
-
-                    <label>
-                        Username
-                    </label>
-
-                    <input
-                        id="registerUsername"
-                        minlength="3"
-                        maxlength="24"
-                        required>
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <label>
-                        Password
-                    </label>
-
-                    <input
-                        id="registerPassword"
-                        type="password"
-                        minlength="4"
-                        required>
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <label>
-                        About You
-                    </label>
-
-                    <textarea
-                        id="registerBio"
-                        maxlength="300"
-                        placeholder="Tell people about yourself">
-                    </textarea>
-
-                </div>
-
-
-                <button
-                    class="btn btn-green">
-                    Create Account
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PROFILE
-     ===================================================== -->
-
-<section
-    id="page-profile"
-    class="page">
+<section id="page-profile" class="page">
 
     <div class="panel">
 
@@ -1132,15 +930,69 @@ textarea {
 
 </section>
 
+<!-- LOGIN -->
 
-<!-- =====================================================
-     ADMIN DASHBOARD
-     ===================================================== -->
+<section id="page-login" class="page">
 
-<section
-    id="page-admin"
-    class="page">
+    <div class="panel">
 
+        <div class="panel-title">
+            GitHub Account Login
+        </div>
+
+        <div class="panel-body">
+
+            <div class="notice">
+
+                This demo requires a GitHub identity
+                to create a profile.
+
+                <br><br>
+
+                For a production deployment, GitHub OAuth
+                must be connected to a backend server.
+            </div>
+
+            <form onsubmit="githubLogin(event)">
+
+                <div class="form-row">
+
+                    <label>
+                        GitHub Username
+                    </label>
+
+                    <input
+                        id="githubUsername"
+                        placeholder="Your GitHub username"
+                        minlength="1"
+                        maxlength="39"
+                        required>
+
+                </div>
+
+                <button
+                    class="btn btn-green">
+                    Continue with GitHub
+                </button>
+
+            </form>
+
+            <br>
+
+            <div style="color:#646d64;font-size:11px;">
+                New accounts automatically begin as
+                <strong>Guest</strong>.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ADMIN -->
+
+<section id="page-admin" class="page">
 
     <div class="panel">
 
@@ -1152,30 +1004,29 @@ textarea {
 
             <div class="notice">
 
-                You are viewing the administrator
-                control panel.
+                Administrator control panel.
 
                 <br><br>
 
-                Admins can add products, delete products,
-                manage users and promote other accounts
-                to administrator.
-
+                DetroitDistro is the only built-in administrator.
+                Other accounts can be promoted to Admin here.
             </div>
-
 
             <button
                 class="btn btn-green"
                 onclick="showPage('add-product')">
-
                 + Add Product
+            </button>
 
+            <button
+                class="btn btn-blue"
+                onclick="showPage('manage-categories')">
+                Manage Categories
             </button>
 
         </div>
 
     </div>
-
 
     <!-- USERS -->
 
@@ -1192,26 +1043,15 @@ textarea {
                 <thead>
 
                     <tr>
-
-                        <th>
-                            Username
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                        <th>
-                            Joined
-                        </th>
-
+                        <th>GitHub</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                        <th>Action</th>
                     </tr>
 
                 </thead>
 
-
-                <tbody
-                    id="usersTable">
+                <tbody id="usersTable">
                 </tbody>
 
             </table>
@@ -1219,7 +1059,6 @@ textarea {
         </div>
 
     </div>
-
 
     <!-- PRODUCTS -->
 
@@ -1236,26 +1075,15 @@ textarea {
                 <thead>
 
                     <tr>
-
-                        <th>
-                            Product
-                        </th>
-
-                        <th>
-                            Category
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Action</th>
                     </tr>
 
                 </thead>
 
-
-                <tbody
-                    id="adminProductsTable">
+                <tbody id="adminProductsTable">
                 </tbody>
 
             </table>
@@ -1266,14 +1094,9 @@ textarea {
 
 </section>
 
+<!-- ADD PRODUCT -->
 
-<!-- =====================================================
-     ADD PRODUCT
-     ===================================================== -->
-
-<section
-    id="page-add-product"
-    class="page">
+<section id="page-add-product" class="page">
 
     <div class="panel">
 
@@ -1283,10 +1106,7 @@ textarea {
 
         <div class="panel-body">
 
-
-            <form
-                onsubmit="addProduct(event)">
-
+            <form onsubmit="addProduct(event)">
 
                 <div class="form-row">
 
@@ -1296,44 +1116,22 @@ textarea {
 
                     <input
                         id="newProductName"
+                        maxlength="100"
                         required>
 
                 </div>
 
-
                 <div class="form-row">
 
                     <label>
-                        Category
+                        Category / Subsection
                     </label>
 
                     <select
                         id="newProductCategory">
-
-                        <option>
-                            Electronics
-                        </option>
-
-                        <option>
-                            Tools
-                        </option>
-
-                        <option>
-                            Cannabis
-                        </option>
-
-                        <option>
-                            Flower
-                        </option>
-
-                        <option>
-                            Vapes
-                        </option>
-
                     </select>
 
                 </div>
-
 
                 <div class="form-row">
 
@@ -1343,11 +1141,26 @@ textarea {
 
                     <textarea
                         id="newProductDescription"
-                        required>
-                    </textarea>
+                        maxlength="1000"
+                        required></textarea>
 
                 </div>
 
+                <div class="form-row">
+
+                    <label>
+                        Display Price
+                    </label>
+
+                    <input
+                        id="newProductPrice"
+                        type="number"
+                        min="0"
+                        max="999999"
+                        step="0.01"
+                        placeholder="Example: 25.00">
+
+                </div>
 
                 <div class="form-row">
 
@@ -1357,18 +1170,14 @@ textarea {
 
                     <input
                         id="newProductImage"
+                        maxlength="500"
                         placeholder="Optional image URL">
 
                 </div>
 
-
-                <button
-                    class="btn btn-green">
-
+                <button class="btn btn-green">
                     Add Listing
-
                 </button>
-
 
             </form>
 
@@ -1378,29 +1187,75 @@ textarea {
 
 </section>
 
+<!-- MANAGE CATEGORIES -->
+
+<section id="page-manage-categories" class="page">
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Manage Categories
+        </div>
+
+        <div class="panel-body">
+
+            <form onsubmit="addCategory(event)">
+
+                <div class="form-row">
+
+                    <label>
+                        Category Name
+                    </label>
+
+                    <input
+                        id="newCategoryName"
+                        maxlength="50"
+                        required>
+
+                </div>
+
+                <div class="form-row">
+
+                    <label>
+                        Parent Category
+                    </label>
+
+                    <select id="newCategoryParent">
+                    </select>
+
+                </div>
+
+                <button class="btn btn-green">
+                    Create Category
+                </button>
+
+            </form>
+
+            <hr style="border-color:#292f29;margin:20px 0;">
+
+            <div id="adminCategoryList">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 </div>
 
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
 <footer class="footer">
 
-    SilkTrail © 2026
+    TheDetroitDistro / DetroitDistributions © 2026
 
     <br><br>
 
-    Product showcase and community review site.
-    No purchasing or transaction functionality.
+    Community product showcase and review site.
+    No purchasing, checkout, payment, or transaction functionality.
 
 </footer>
 
-
-<!-- =====================================================
-     PRODUCT MODAL
-     ===================================================== -->
+<!-- PRODUCT MODAL -->
 
 <div
     class="modal-overlay"
@@ -1411,8 +1266,7 @@ textarea {
 
         <div class="modal-header">
 
-            <h2
-                id="modalProductTitle">
+            <h2 id="modalProductTitle">
                 Product
             </h2>
 
@@ -1424,7 +1278,6 @@ textarea {
 
         </div>
 
-
         <div
             class="modal-body"
             id="modalProductContent">
@@ -1434,240 +1287,371 @@ textarea {
 
 </div>
 
-
 <script>
 
 /* =====================================================
-   DEFAULT USERS
-
-   KING.SCRAP IS THE BUILT-IN ADMIN
+   DATABASE VERSION
    ===================================================== */
 
-const DEFAULT_USERS = [
+const DB_VERSION = 3;
+
+const USERS_KEY = "detroitdistro_users_v3";
+const PRODUCTS_KEY = "detroitdistro_products_v3";
+const CATEGORIES_KEY = "detroitdistro_categories_v3";
+const CURRENT_USER_KEY = "detroitdistro_currentUser_v3";
+const INIT_KEY = "detroitdistro_initialized_v3";
+
+/*
+   IMPORTANT:
+
+   This is a browser demo.
+
+   localStorage is NOT a secure database.
+   For real public deployment, move all of this
+   to a backend database and GitHub OAuth.
+*/
+
+/* =====================================================
+   DEFAULT ADMIN
+   ===================================================== */
+
+const DEFAULT_ADMIN = {
+    githubUsername: "DetroitDistro",
+    githubId: "builtin-detroitdistro-admin",
+    status: "Admin",
+    bio: "TheDetroitDistro administrator.",
+    joined: "August 19, 2026"
+};
+
+/* =====================================================
+   DEFAULT CATEGORIES
+   ===================================================== */
+
+const DEFAULT_CATEGORIES = [
 
     {
-        username: "king.scrap",
+        id: "electronics",
+        name: "Electronics",
+        parent: null
+    },
 
-        password: "BananaMontana",
+    {
+        id: "tools",
+        name: "Tools",
+        parent: null
+    },
 
-        status: "Admin",
+    {
+        id: "cannabis",
+        name: "Cannabis",
+        parent: null
+    },
 
-        bio: "Site administrator.",
+    {
+        id: "flower",
+        name: "Flower",
+        parent: "cannabis"
+    },
 
-        joined: "August 18, 2026"
+    {
+        id: "vapes",
+        name: "Vapes",
+        parent: "cannabis"
     }
 
 ];
 
-
 /* =====================================================
-   DEFAULT PRODUCTS
+   DEFAULT EXAMPLE PRODUCTS
    ===================================================== */
 
 const DEFAULT_PRODUCTS = [
 
     {
-        id: 1,
-
+        id: "example-electronics",
         name: "Example Headphones",
-
-        category: "Electronics",
-
+        category: "electronics",
         description:
-            "Example electronics listing for the catalog.",
-
+            "Example electronics listing for demonstration.",
+        price: 0,
         image: "",
-
         reviews: []
     },
 
-
     {
-        id: 2,
-
+        id: "example-tools",
         name: "Workshop Tool Kit",
-
-        category: "Tools",
-
+        category: "tools",
         description:
-            "Example tools listing.",
-
+            "Example tools listing for demonstration.",
+        price: 0,
         image: "",
-
         reviews: []
     },
 
-
     {
-        id: 3,
-
+        id: "example-flower",
         name: "Example Flower Listing",
-
-        category: "Flower",
-
+        category: "flower",
         description:
-            "Example catalog entry.",
-
+            "Example subsection listing for demonstration.",
+        price: 0,
         image: "",
-
         reviews: []
     },
 
-
     {
-        id: 4,
-
+        id: "example-vape",
         name: "Example Vape Listing",
-
-        category: "Vapes",
-
+        category: "vapes",
         description:
-            "Example catalog entry.",
-
+            "Example subsection listing for demonstration.",
+        price: 0,
         image: "",
-
-        reviews: []
-    },
-
-
-    {
-        id: 5,
-
-        name: "Example Cannabis Listing",
-
-        category: "Cannabis",
-
-        description:
-            "Example catalog entry.",
-
-        image: "",
-
         reviews: []
     }
 
 ];
 
+/* =====================================================
+   SAFE STORAGE
+   ===================================================== */
+
+function readStorage(key, fallback) {
+
+    try {
+
+        const value =
+            localStorage.getItem(key);
+
+        if (!value) {
+            return fallback;
+        }
+
+        const parsed =
+            JSON.parse(value);
+
+        return parsed;
+
+    } catch (error) {
+
+        console.error(
+            "Storage read error:",
+            error
+        );
+
+        return fallback;
+    }
+}
+
+function writeStorage(key, value) {
+
+    try {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(value)
+        );
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            "Storage write error:",
+            error
+        );
+
+        alert(
+            "Unable to save data in this browser."
+        );
+
+        return false;
+    }
+}
+
+/* =====================================================
+   INITIALIZE DATABASE
+
+   IMPORTANT:
+   We DO NOT use:
+
+       JSON.parse(...) || DEFAULT_PRODUCTS
+
+   because that can make old/broken storage
+   appear to fall back unexpectedly.
+
+   We initialize only once.
+   ===================================================== */
+
+function initializeDatabase() {
+
+    const initialized =
+        localStorage.getItem(INIT_KEY);
+
+    if (!initialized) {
+
+        writeStorage(
+            USERS_KEY,
+            [DEFAULT_ADMIN]
+        );
+
+        writeStorage(
+            PRODUCTS_KEY,
+            DEFAULT_PRODUCTS
+        );
+
+        writeStorage(
+            CATEGORIES_KEY,
+            DEFAULT_CATEGORIES
+        );
+
+        localStorage.setItem(
+            INIT_KEY,
+            String(DB_VERSION)
+        );
+    }
+}
 
 /* =====================================================
    LOAD DATABASE
    ===================================================== */
 
-let users =
-    JSON.parse(
-        localStorage.getItem(
-            "silktrail_users"
-        )
-    )
-    || DEFAULT_USERS;
+initializeDatabase();
 
+let users =
+    readStorage(
+        USERS_KEY,
+        [DEFAULT_ADMIN]
+    );
 
 let products =
-    JSON.parse(
-        localStorage.getItem(
-            "silktrail_products"
-        )
-    )
-    || DEFAULT_PRODUCTS;
+    readStorage(
+        PRODUCTS_KEY,
+        []
+    );
 
+let categories =
+    readStorage(
+        CATEGORIES_KEY,
+        DEFAULT_CATEGORIES
+    );
 
 let currentUser =
-    JSON.parse(
-        localStorage.getItem(
-            "silktrail_currentUser"
-        )
-    )
-    || null;
-
+    readStorage(
+        CURRENT_USER_KEY,
+        null
+    );
 
 /* =====================================================
-   SAVE DATABASE
+   DATA VALIDATION
+   ===================================================== */
+
+function normalizeDatabase() {
+
+    if (!Array.isArray(users)) {
+        users = [DEFAULT_ADMIN];
+    }
+
+    if (!Array.isArray(products)) {
+        products = [];
+    }
+
+    if (!Array.isArray(categories)) {
+        categories = DEFAULT_CATEGORIES;
+    }
+
+    /*
+       Make absolutely sure DetroitDistro exists.
+    */
+
+    const adminExists =
+        users.some(
+            user =>
+                user.githubUsername
+                    .toLowerCase()
+                ===
+                "detroitdistro"
+        );
+
+    if (!adminExists) {
+
+        users.unshift(
+            DEFAULT_ADMIN
+        );
+    }
+
+    /*
+       Every product gets a review array.
+    */
+
+    products.forEach(
+        product => {
+
+            if (
+                !Array.isArray(
+                    product.reviews
+                )
+            ) {
+
+                product.reviews = [];
+
+            }
+
+            if (
+                typeof product.price
+                !== "number"
+            ) {
+
+                product.price = 0;
+
+            }
+
+        }
+    );
+
+    writeStorage(
+        USERS_KEY,
+        users
+    );
+
+    writeStorage(
+        PRODUCTS_KEY,
+        products
+    );
+
+    writeStorage(
+        CATEGORIES_KEY,
+        categories
+    );
+}
+
+normalizeDatabase();
+
+/* =====================================================
+   SAVE
    ===================================================== */
 
 function saveUsers() {
-
-    localStorage.setItem(
-        "silktrail_users",
-        JSON.stringify(users)
+    writeStorage(
+        USERS_KEY,
+        users
     );
-
 }
-
 
 function saveProducts() {
-
-    localStorage.setItem(
-        "silktrail_products",
-        JSON.stringify(products)
+    writeStorage(
+        PRODUCTS_KEY,
+        products
     );
-
 }
 
-
-/* =====================================================
-   PAGE NAVIGATION
-   ===================================================== */
-
-function showPage(page) {
-
-    document
-        .querySelectorAll(".page")
-        .forEach(
-            p => p.classList.remove("active")
-        );
-
-
-    const target =
-        document.getElementById(
-            "page-" + page
-        );
-
-
-    if (!target) return;
-
-
-    target.classList.add("active");
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-
-    if (page === "catalog") {
-
-        renderCatalog();
-
-    }
-
-
-    if (page === "profile") {
-
-        renderProfile();
-
-    }
-
-
-    if (page === "admin") {
-
-        if (!isAdmin()) {
-
-            alert(
-                "Administrator access required."
-            );
-
-            showPage("home");
-
-            return;
-
-        }
-
-        renderAdmin();
-
-    }
-
+function saveCategories() {
+    writeStorage(
+        CATEGORIES_KEY,
+        categories
+    );
 }
-
 
 /* =====================================================
    ADMIN CHECK
@@ -1679,12 +1663,70 @@ function isAdmin() {
         currentUser &&
         currentUser.status === "Admin"
     );
-
 }
 
+/* =====================================================
+   MEMBER CHECK
+   ===================================================== */
+
+function isMember() {
+
+    return (
+        currentUser &&
+        (
+            currentUser.status === "Member" ||
+            currentUser.status === "Admin"
+        )
+    );
+}
 
 /* =====================================================
-   UPDATE USER AREA
+   SUSPENSION CHECK
+   ===================================================== */
+
+function isSuspended() {
+
+    if (!currentUser) {
+        return false;
+    }
+
+    const actualUser =
+        users.find(
+            user =>
+                user.githubUsername
+                .toLowerCase()
+                ===
+                currentUser.githubUsername
+                    .toLowerCase()
+        );
+
+    return (
+        actualUser &&
+        actualUser.status === "Suspended"
+    );
+}
+
+function enforceAccountStatus() {
+
+    if (isSuspended()) {
+
+        document
+            .getElementById(
+                "suspendedScreen"
+            )
+            .style.display = "flex";
+
+        document.body.style.overflow =
+            "hidden";
+
+        return true;
+    }
+
+    return false;
+}
+
+/* =====================================================
+   USER AREA
    ===================================================== */
 
 function updateUserArea() {
@@ -1694,12 +1736,10 @@ function updateUserArea() {
             "userArea"
         );
 
-
     const adminNav =
         document.getElementById(
             "adminNav"
         );
-
 
     if (currentUser) {
 
@@ -1708,15 +1748,26 @@ function updateUserArea() {
             Logged in as
             <strong>
                 ${escapeHTML(
-                    currentUser.username
+                    currentUser.githubUsername
                 )}
             </strong>
 
             <br>
 
+            <span style="font-size:10px;">
+                ${escapeHTML(
+                    currentUser.status
+                )}
+            </span>
+
+            |
+
             <a
                 href="#"
-                onclick="showPage('profile')">
+                onclick="
+                    showPage('profile');
+                    return false;
+                ">
                 Profile
             </a>
 
@@ -1724,7 +1775,10 @@ function updateUserArea() {
 
             <a
                 href="#"
-                onclick="logout()">
+                onclick="
+                    logout();
+                    return false;
+                ">
                 Logout
             </a>
 
@@ -1740,211 +1794,184 @@ function updateUserArea() {
 
             <a
                 href="#"
-                onclick="showPage('login')">
-                Login
-            </a>
-
-            /
-
-            <a
-                href="#"
-                onclick="showPage('register')">
-                Register
+                onclick="
+                    showPage('login');
+                    return false;
+                ">
+                GitHub Login
             </a>
 
         `;
-
     }
-
 
     adminNav.style.display =
         isAdmin()
         ? "block"
         : "none";
 
+    enforceAccountStatus();
 }
 
-
 /* =====================================================
-   REGISTER
+   GITHUB LOGIN DEMO
    ===================================================== */
 
-function register(event) {
+function githubLogin(event) {
 
     event.preventDefault();
-
 
     const username =
         document
             .getElementById(
-                "registerUsername"
+                "githubUsername"
             )
             .value
             .trim();
 
-
-    const password =
-        document
-            .getElementById(
-                "registerPassword"
-            )
-            .value;
-
-
-    const bio =
-        document
-            .getElementById(
-                "registerBio"
-            )
-            .value
-            .trim();
-
+    if (!username) {
+        return;
+    }
 
     if (
-        users.some(
-            u =>
-                u.username.toLowerCase()
-                ===
-                username.toLowerCase()
-        )
+        username.length < 1 ||
+        username.length > 39
     ) {
 
         alert(
-            "That username already exists."
+            "Invalid GitHub username."
         );
 
         return;
-
     }
 
+    /*
+       DetroitDistro is reserved for
+       the built-in administrator.
 
-    const newUser = {
+       Nobody can create another
+       DetroitDistro account.
+    */
 
-        username,
+    if (
+        username.toLowerCase()
+        ===
+        "detroitdistro"
+    ) {
 
-        password,
+        currentUser =
+            users.find(
+                user =>
+                    user.githubUsername
+                        .toLowerCase()
+                    ===
+                    "detroitdistro"
+            );
 
-        status: "Member",
-
-        bio,
-
-        joined:
-            new Date()
-                .toLocaleDateString(
-                    undefined,
-                    {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                    }
-                )
-
-    };
-
-
-    users.push(newUser);
-
-
-    saveUsers();
-
-
-    currentUser = newUser;
-
-
-    localStorage.setItem(
-        "silktrail_currentUser",
-        JSON.stringify(
+        writeStorage(
+            CURRENT_USER_KEY,
             currentUser
-        )
-    );
-
-
-    updateUserArea();
-
-
-    alert(
-        "Account created."
-    );
-
-
-    showPage("profile");
-
-}
-
-
-/* =====================================================
-   LOGIN
-   ===================================================== */
-
-function login(event) {
-
-    event.preventDefault();
-
-
-    const username =
-        document
-            .getElementById(
-                "loginUsername"
-            )
-            .value
-            .trim();
-
-
-    const password =
-        document
-            .getElementById(
-                "loginPassword"
-            )
-            .value;
-
-
-    const user =
-        users.find(
-            u =>
-                u.username.toLowerCase()
-                ===
-                username.toLowerCase()
-                &&
-                u.password === password
         );
 
+        updateUserArea();
+
+        showPage("admin");
+
+        return;
+    }
+
+    /*
+       Find existing GitHub identity.
+    */
+
+    let user =
+        users.find(
+            existing =>
+                existing.githubUsername
+                    .toLowerCase()
+                ===
+                username.toLowerCase()
+        );
+
+    /*
+       New GitHub accounts begin
+       as Guest.
+    */
 
     if (!user) {
 
+        user = {
+
+            githubUsername:
+                username,
+
+            githubId:
+                "github-demo-" +
+                cryptoRandomId(),
+
+            status:
+                "Guest",
+
+            bio:
+                "",
+
+            joined:
+                new Date()
+                    .toLocaleDateString(
+                        undefined,
+                        {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                        }
+                    )
+
+        };
+
+        users.push(user);
+
+        saveUsers();
+
         alert(
-            "Invalid username or password."
+            "GitHub profile created. " +
+            "Your account is currently Guest."
         );
-
-        return;
-
     }
-
 
     currentUser = user;
 
-
-    localStorage.setItem(
-        "silktrail_currentUser",
-        JSON.stringify(
-            currentUser
-        )
+    writeStorage(
+        CURRENT_USER_KEY,
+        currentUser
     );
-
 
     updateUserArea();
 
-
-    alert(
-        "Welcome back, "
-        + user.username
-        + "."
-    );
-
-
     showPage("profile");
-
 }
 
+/* =====================================================
+   RANDOM ID
+   ===================================================== */
+
+function cryptoRandomId() {
+
+    if (
+        window.crypto &&
+        crypto.randomUUID
+    ) {
+
+        return crypto.randomUUID();
+
+    }
+
+    return (
+        Date.now().toString(36)
+        +
+        Math.random()
+            .toString(36)
+            .substring(2)
+    );
+}
 
 /* =====================================================
    LOGOUT
@@ -1954,277 +1981,448 @@ function logout() {
 
     currentUser = null;
 
-
     localStorage.removeItem(
-        "silktrail_currentUser"
+        CURRENT_USER_KEY
     );
 
+    document
+        .getElementById(
+            "suspendedScreen"
+        )
+        .style.display = "none";
+
+    document.body.style.overflow =
+        "";
 
     updateUserArea();
 
-
     showPage("home");
-
 }
 
-
-/* =====================================================
-   PROFILE
-   ===================================================== */
-
-function renderProfile() {
-
-    const content =
-        document.getElementById(
-            "profileContent"
-        );
-
-
-    if (!currentUser) {
-
-        content.innerHTML = `
-
-            <div class="empty">
-
-                You must be logged in
-                to view your profile.
-
-                <br><br>
-
-                <button
-                    class="btn btn-green"
-                    onclick="showPage('login')">
-
-                    Login
-
-                </button>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    let reviewCount = 0;
-
-
-    products.forEach(product => {
-
-        if (!product.reviews) return;
-
-
-        product.reviews.forEach(review => {
-
-            if (
-                review.username
-                ===
-                currentUser.username
-            ) {
-
-                reviewCount++;
-
-            }
-
-        });
-
-    });
-
-
-    content.innerHTML = `
-
-        <div class="profile-header">
-
-            <div class="avatar">
-
-                ${escapeHTML(
-                    currentUser.username
-                        .charAt(0)
-                        .toUpperCase()
-                )}
-
-            </div>
-
-
-            <div>
-
-                <div class="profile-name">
-
-                    ${escapeHTML(
-                        currentUser.username
-                    )}
-
-                </div>
-
-
-                <div class="status">
-
-                    ${escapeHTML(
-                        currentUser.status
-                    )}
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <br>
-
-
-        <strong>
-            About
-        </strong>
-
-
-        <p
-            style="
-                color:#7f887f;
-                line-height:1.6;
-            ">
-
-            ${escapeHTML(
-                currentUser.bio
-                ||
-                "No profile description."
-            )}
-
-        </p>
-
-
-        <hr
-            style="
-                border-color:#292f29;
-            ">
-
-
-        <strong>
-            Joined:
-        </strong>
-
-        ${escapeHTML(
-            currentUser.joined
-        )}
-
-
-        <br><br>
-
-
-        <strong>
-            Reviews:
-        </strong>
-
-        ${reviewCount}
-
-    `;
-
+function forceLogout() {
+    logout();
 }
 
-
 /* =====================================================
-   SEARCH
+   PAGE NAVIGATION
    ===================================================== */
 
-function searchFromHome(event) {
+function showPage(page) {
 
     if (
-        event.key === "Enter"
+        currentUser &&
+        isSuspended()
     ) {
 
-        searchCatalog();
+        enforceAccountStatus();
 
+        return;
     }
 
-}
-
-
-function searchCatalog() {
-
-    const value =
-        document
-            .getElementById(
-                "homeSearch"
-            )
-            .value;
-
-
-    showPage("catalog");
-
-
     document
-        .getElementById(
-            "catalogSearch"
-        )
-        .value = value;
+        .querySelectorAll(".page")
+        .forEach(
+            p =>
+                p.classList.remove(
+                    "active"
+                )
+        );
 
+    const target =
+        document.getElementById(
+            "page-" + page
+        );
 
-    renderCatalog();
+    if (!target) {
+        return;
+    }
 
+    target.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    if (page === "catalog") {
+        renderCatalog();
+    }
+
+    if (page === "profile") {
+        renderProfile();
+    }
+
+    if (page === "admin") {
+
+        if (!isAdmin()) {
+
+            alert(
+                "Administrator access required."
+            );
+
+            showPage("home");
+
+            return;
+        }
+
+        renderAdmin();
+    }
+
+    if (page === "categories") {
+        renderCategoryTree();
+    }
+
+    if (page === "manage-categories") {
+        renderCategoryManager();
+    }
 }
-
 
 /* =====================================================
-   CATEGORY
+   CATEGORIES
    ===================================================== */
 
-function showCategory(category) {
+function getCategoryById(id) {
+
+    return categories.find(
+        category =>
+            category.id === id
+    );
+}
+
+function getCategoryName(id) {
+
+    const category =
+        getCategoryById(id);
+
+    return category
+        ? category.name
+        : "Uncategorized";
+}
+
+function getCategoryPath(id) {
+
+    const category =
+        getCategoryById(id);
+
+    if (!category) {
+        return "Uncategorized";
+    }
+
+    if (!category.parent) {
+        return category.name;
+    }
+
+    const parent =
+        getCategoryById(
+            category.parent
+        );
+
+    if (!parent) {
+        return category.name;
+    }
+
+    return (
+        parent.name
+        +
+        " / "
+        +
+        category.name
+    );
+}
+
+function showCategory(categoryId) {
 
     showPage("catalog");
 
-
-    document
-        .getElementById(
+    const select =
+        document.getElementById(
             "catalogCategory"
-        )
-        .value = category;
+        );
 
+    select.value =
+        categoryId;
 
     renderCatalog();
-
 }
 
-
 /* =====================================================
-   HOME PRODUCTS
+   RENDER CATEGORY SELECT
    ===================================================== */
 
-function renderHome() {
+function renderCategorySelects() {
+
+    const catalogSelect =
+        document.getElementById(
+            "catalogCategory"
+        );
+
+    const productSelect =
+        document.getElementById(
+            "newProductCategory"
+        );
+
+    const parentSelect =
+        document.getElementById(
+            "newCategoryParent"
+        );
+
+    if (catalogSelect) {
+
+        catalogSelect.innerHTML = `
+
+            <option value="All">
+                All Categories
+            </option>
+
+            ${
+                categories
+                    .map(
+                        category => `
+                            <option
+                                value="${escapeHTML(
+                                    category.id
+                                )}">
+                                ${escapeHTML(
+                                    getCategoryPath(
+                                        category.id
+                                    )
+                                )}
+                            </option>
+                        `
+                    )
+                    .join("")
+            }
+
+        `;
+    }
+
+    if (productSelect) {
+
+        productSelect.innerHTML =
+            categories
+                .map(
+                    category => `
+
+                        <option
+                            value="${escapeHTML(
+                                category.id
+                            )}">
+
+                            ${escapeHTML(
+                                getCategoryPath(
+                                    category.id
+                                )
+                            )}
+
+                        </option>
+
+                    `
+                )
+                .join("");
+    }
+
+    if (parentSelect) {
+
+        parentSelect.innerHTML = `
+
+            <option value="">
+                Main Category
+            </option>
+
+            ${
+                categories
+                    .filter(
+                        category =>
+                            category.parent
+                            ===
+                            null
+                    )
+                    .map(
+                        category => `
+
+                            <option
+                                value="${escapeHTML(
+                                    category.id
+                                )}">
+
+                                ${escapeHTML(
+                                    category.name
+                                )}
+
+                            </option>
+
+                        `
+                    )
+                    .join("")
+            }
+
+        `;
+    }
+}
+
+/* =====================================================
+   CATEGORY TREE
+   ===================================================== */
+
+function renderCategoryTree() {
 
     const container =
         document.getElementById(
-            "homeProducts"
+            "categoryTree"
         );
 
+    const parents =
+        categories.filter(
+            category =>
+                category.parent === null
+        );
 
-    const latest =
-        products.slice(0, 6);
-
-
-    if (!latest.length) {
+    if (!parents.length) {
 
         container.innerHTML = `
-
             <div class="empty">
-                No products yet.
+                No categories have been created.
             </div>
-
         `;
 
         return;
-
     }
 
-
     container.innerHTML =
-        latest
-            .map(productCard)
-            .join("");
+        parents
+            .map(
+                parent => {
 
+                    const children =
+                        categories.filter(
+                            category =>
+                                category.parent
+                                ===
+                                parent.id
+                        );
+
+                    return `
+
+                        <div
+                            class="category-parent">
+
+                            <div
+                                class="category-parent-title">
+
+                                ${escapeHTML(
+                                    parent.name
+                                )}
+
+                                <button
+                                    class="btn"
+                                    style="
+                                        margin-left:8px;
+                                        padding:4px 8px;
+                                    "
+                                    onclick="
+                                        showCategory(
+                                            '${escapeJS(
+                                                parent.id
+                                            )}'
+                                        )
+                                    ">
+
+                                    View
+
+                                </button>
+
+                            </div>
+
+                            ${
+                                children.length
+                                ?
+
+                                `
+
+                                <div
+                                    class="subcategory-list">
+
+                                    ${
+                                        children
+                                            .map(
+                                                child => `
+
+                                                    <button
+                                                        class="category"
+                                                        onclick="
+                                                            showCategory(
+                                                                '${escapeJS(
+                                                                    child.id
+                                                                )}'
+                                                            )
+                                                        ">
+
+                                                        ${escapeHTML(
+                                                            child.name
+                                                        )}
+
+                                                    </button>
+
+                                                `
+                                            )
+                                            .join("")
+                                    }
+
+                                </div>
+
+                                `
+
+                                :
+
+                                ""
+                            }
+
+                        </div>
+
+                    `;
+                }
+            )
+            .join("");
 }
 
+/* =====================================================
+   HOME CATEGORY BUTTONS
+   ===================================================== */
+
+function renderHomeCategories() {
+
+    const container =
+        document.getElementById(
+            "homeCategories"
+        );
+
+    container.innerHTML =
+        categories
+            .map(
+                category => `
+
+                    <button
+                        class="category"
+                        onclick="
+                            showCategory(
+                                '${escapeJS(
+                                    category.id
+                                )}'
+                            )
+                        ">
+
+                        ${escapeHTML(
+                            getCategoryPath(
+                                category.id
+                            )
+                        )}
+
+                    </button>
+
+                `
+            )
+            .join("");
+}
 
 /* =====================================================
    CATALOG
@@ -2233,22 +2431,26 @@ function renderHome() {
 function renderCatalog() {
 
     const search =
-        document
-            .getElementById(
-                "catalogSearch"
-            )
-            .value
-            .toLowerCase()
-            .trim();
-
+        (
+            document
+                .getElementById(
+                    "catalogSearch"
+                )
+                ?.value
+            ||
+            ""
+        )
+        .toLowerCase()
+        .trim();
 
     const category =
         document
             .getElementById(
                 "catalogCategory"
             )
-            .value;
-
+            ?.value
+        ||
+        "All";
 
     const filtered =
         products.filter(
@@ -2258,8 +2460,8 @@ function renderCatalog() {
                     category === "All"
                     ||
                     product.category
-                    === category;
-
+                    ===
+                    category;
 
                 const searchMatch =
                     !search
@@ -2270,30 +2472,30 @@ function renderCatalog() {
                     ||
                     product.description
                         .toLowerCase()
-                        .includes(search);
-
+                        .includes(search)
+                    ||
+                    getCategoryPath(
+                        product.category
+                    )
+                    .toLowerCase()
+                    .includes(search);
 
                 return (
-                    categoryMatch
-                    &&
+                    categoryMatch &&
                     searchMatch
                 );
-
             }
         );
-
 
     document.getElementById(
         "catalogCount"
     ).textContent =
         ` — ${filtered.length} listing(s)`;
 
-
     const container =
         document.getElementById(
             "catalogProducts"
         );
-
 
     if (!filtered.length) {
 
@@ -2306,17 +2508,13 @@ function renderCatalog() {
         `;
 
         return;
-
     }
-
 
     container.innerHTML =
         filtered
             .map(productCard)
             .join("");
-
 }
-
 
 /* =====================================================
    PRODUCT CARD
@@ -2326,7 +2524,6 @@ function productCard(product) {
 
     let image;
 
-
     if (product.image) {
 
         image = `
@@ -2335,7 +2532,6 @@ function productCard(product) {
                 src="${escapeHTML(
                     product.image
                 )}"
-
                 alt="${escapeHTML(
                     product.name
                 )}">
@@ -2348,37 +2544,66 @@ function productCard(product) {
             categoryIcon(
                 product.category
             );
-
     }
-
 
     const rating =
         getRating(product);
 
+    /*
+       ONLY MEMBERS AND ADMINS
+       CAN SEE PRICE.
+    */
+
+    let priceHTML = "";
+
+    if (isMember()) {
+
+        priceHTML = `
+
+            <div class="price">
+
+                Display Price:
+                $${Number(
+                    product.price || 0
+                ).toFixed(2)}
+
+            </div>
+
+        `;
+
+    } else {
+
+        priceHTML = `
+
+            <div class="price-hidden">
+
+                Login and become a Member
+                to view price.
+
+            </div>
+
+        `;
+    }
 
     return `
 
         <div class="product">
 
-
             <div class="product-image">
-
                 ${image}
-
             </div>
 
-
             <div class="product-info">
-
 
                 <div class="product-category">
 
                     ${escapeHTML(
-                        product.category
+                        getCategoryPath(
+                            product.category
+                        )
                     )}
 
                 </div>
-
 
                 <div class="product-name">
 
@@ -2388,7 +2613,6 @@ function productCard(product) {
 
                 </div>
 
-
                 <div class="product-description">
 
                     ${escapeHTML(
@@ -2397,9 +2621,9 @@ function productCard(product) {
 
                 </div>
 
+                ${priceHTML}
 
                 <div class="product-footer">
-
 
                     <span class="rating">
 
@@ -2411,45 +2635,81 @@ function productCard(product) {
 
                     </span>
 
-
                     <button
                         class="btn"
-                        onclick="openProduct(
-                            ${product.id}
-                        )">
+                        onclick="
+                            openProduct(
+                                '${escapeJS(
+                                    String(
+                                        product.id
+                                    )
+                                )}'
+                            )
+                        ">
 
                         View
 
                     </button>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
     `;
-
 }
 
+/* =====================================================
+   HOME PRODUCTS
+   ===================================================== */
+
+function renderHome() {
+
+    const container =
+        document.getElementById(
+            "homeProducts"
+        );
+
+    const latest =
+        products.slice(0, 6);
+
+    if (!latest.length) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+                No products yet.
+            </div>
+
+        `;
+
+        return;
+    }
+
+    container.innerHTML =
+        latest
+            .map(productCard)
+            .join("");
+}
 
 /* =====================================================
-   OPEN PRODUCT
+   PRODUCT MODAL
    ===================================================== */
 
 function openProduct(id) {
 
     const product =
         products.find(
-            p => p.id === id
+            p =>
+                String(p.id)
+                ===
+                String(id)
         );
 
-
-    if (!product) return;
-
+    if (!product) {
+        return;
+    }
 
     document
         .getElementById(
@@ -2458,14 +2718,14 @@ function openProduct(id) {
         .textContent =
         product.name;
 
-
     const reviews =
-        product.reviews
-        || [];
-
+        Array.isArray(
+            product.reviews
+        )
+        ? product.reviews
+        : [];
 
     let reviewsHTML;
-
 
     if (!reviews.length) {
 
@@ -2484,105 +2744,178 @@ function openProduct(id) {
                 .map(
                     review => `
 
-                    <div class="review">
+                        <div class="review">
 
+                            <div
+                                class="review-top">
 
-                        <div class="review-top">
+                                <span
+                                    class="review-user">
 
-                            <span
-                                class="review-user">
+                                    ${escapeHTML(
+                                        review.username
+                                    )}
 
-                                ${escapeHTML(
-                                    review.username
+                                </span>
+
+                                <span
+                                    class="review-date">
+
+                                    ${escapeHTML(
+                                        review.date
+                                    )}
+
+                                </span>
+
+                            </div>
+
+                            <div
+                                class="review-stars">
+
+                                ${"★".repeat(
+                                    Number(
+                                        review.stars
+                                    )
                                 )}
 
-                            </span>
-
-
-                            <span
-                                class="review-date">
-
-                                ${escapeHTML(
-                                    review.date
+                                ${"☆".repeat(
+                                    5 -
+                                    Number(
+                                        review.stars
+                                    )
                                 )}
 
-                            </span>
+                            </div>
+
+                            <div
+                                class="review-text">
+
+                                ${escapeHTML(
+                                    review.text
+                                )}
+
+                            </div>
 
                         </div>
 
-
-                        <div
-                            class="review-stars">
-
-                            ${"★".repeat(
-                                review.stars
-                            )}
-
-                            ${"☆".repeat(
-                                5 -
-                                review.stars
-                            )}
-
-                        </div>
-
-
-                        <div
-                            class="review-text">
-
-                            ${escapeHTML(
-                                review.text
-                            )}
-
-                        </div>
-
-
-                    </div>
-
-                `
+                    `
                 )
                 .join("");
-
     }
 
+    let reviewForm = "";
 
-    let reviewForm;
+    if (!currentUser) {
 
+        reviewForm = `
 
-    if (currentUser) {
+            <div class="notice">
+
+                <a
+                    href="#"
+                    onclick="
+                        closeProduct();
+                        showPage('login');
+                        return false;
+                    ">
+
+                    Login with GitHub
+
+                </a>
+
+                to create a profile.
+
+            </div>
+
+        `;
+
+    } else if (
+        currentUser.status === "Guest"
+    ) {
+
+        reviewForm = `
+
+            <div class="notice warning">
+
+                Your account is currently
+                <strong>Guest</strong>.
+
+                <br><br>
+
+                A site administrator must promote
+                your account to <strong>Member</strong>
+                before you can leave reviews.
+
+            </div>
+
+        `;
+
+    } else if (
+        currentUser.status === "Suspended"
+    ) {
+
+        reviewForm = `
+
+            <div class="notice danger">
+
+                Your account is suspended.
+
+            </div>
+
+        `;
+
+    } else if (
+        hasReviewed(
+            product
+        )
+    ) {
+
+        reviewForm = `
+
+            <div class="notice">
+
+                You have already reviewed this product.
+
+                <br><br>
+
+                Members may leave a maximum
+                of one review per product.
+
+            </div>
+
+        `;
+
+    } else {
 
         reviewForm = `
 
             <br>
 
-
             <div class="panel">
 
-
                 <div class="panel-title">
-
                     Leave a Review
-
                 </div>
 
-
                 <div class="panel-body">
-
 
                     <form
                         onsubmit="
                             submitReview(
                                 event,
-                                ${product.id}
+                                '${escapeJS(
+                                    String(
+                                        product.id
+                                    )
+                                )}'
                             )
                         ">
-
 
                         <div class="form-row">
 
                             <label>
                                 Rating
                             </label>
-
 
                             <select
                                 id="reviewStars">
@@ -2611,22 +2944,18 @@ function openProduct(id) {
 
                         </div>
 
-
                         <div class="form-row">
 
                             <label>
                                 Review
                             </label>
 
-
                             <textarea
                                 id="reviewText"
                                 maxlength="500"
-                                required>
-                            </textarea>
+                                required></textarea>
 
                         </div>
-
 
                         <button
                             class="btn btn-green">
@@ -2635,42 +2964,43 @@ function openProduct(id) {
 
                         </button>
 
-
                     </form>
-
 
                 </div>
 
-
             </div>
 
         `;
-
-    } else {
-
-        reviewForm = `
-
-            <div class="notice">
-
-                <a
-                    href="#"
-                    onclick="
-                        closeProduct();
-                        showPage('login')
-                    ">
-
-                    Login
-
-                </a>
-
-                to leave a review.
-
-            </div>
-
-        `;
-
     }
 
+    const priceHTML =
+        isMember()
+        ?
+
+        `
+
+            <div class="price">
+
+                Display Price:
+                $${Number(
+                    product.price || 0
+                ).toFixed(2)}
+
+            </div>
+
+        `
+
+        :
+
+        `
+
+            <div class="price-hidden">
+
+                Price visible to Members only.
+
+            </div>
+
+        `;
 
     document
         .getElementById(
@@ -2678,99 +3008,84 @@ function openProduct(id) {
         )
         .innerHTML = `
 
+            <div
+                class="product-image"
+                style="
+                    height:220px;
+                    margin-bottom:15px;
+                ">
 
-        <div
-            class="product-image"
-            style="
-                height:220px;
-                margin-bottom:15px;
-            ">
+                ${
+                    product.image
 
-            ${
-                product.image
+                    ?
 
-                ?
+                    `<img
+                        src="${escapeHTML(
+                            product.image
+                        )}"
+                        alt="${escapeHTML(
+                            product.name
+                        )}">`
 
-                `<img
-                    src="${escapeHTML(
-                        product.image
-                    )}"
+                    :
 
-                    alt="${escapeHTML(
-                        product.name
-                    )}">`
-
-                :
-
-                categoryIcon(
-                    product.category
-                )
-            }
-
-        </div>
-
-
-        <div
-            class="product-category">
-
-            ${escapeHTML(
-                product.category
-            )}
-
-        </div>
-
-
-        <p
-            style="
-                color:#899289;
-                line-height:1.7;
-            ">
-
-            ${escapeHTML(
-                product.description
-            )}
-
-        </p>
-
-
-        <br>
-
-
-        <div class="panel">
-
-
-            <div class="panel-title">
-                Reviews
-            </div>
-
-
-            <div class="panel-body">
-
-                ${reviewsHTML}
+                    categoryIcon(
+                        product.category
+                    )
+                }
 
             </div>
 
+            <div class="product-category">
 
-        </div>
+                ${escapeHTML(
+                    getCategoryPath(
+                        product.category
+                    )
+                )}
 
+            </div>
 
-        ${reviewForm}
+            <p
+                style="
+                    color:#899289;
+                    line-height:1.7;
+                ">
 
-    `;
+                ${escapeHTML(
+                    product.description
+                )}
 
+            </p>
+
+            ${priceHTML}
+
+            <br>
+
+            <div class="panel">
+
+                <div class="panel-title">
+                    Reviews
+                </div>
+
+                <div class="panel-body">
+
+                    ${reviewsHTML}
+
+                </div>
+
+            </div>
+
+            ${reviewForm}
+        `;
 
     document
         .getElementById(
             "productModal"
         )
         .classList.add("show");
-
 }
-
-
-/* =====================================================
-   CLOSE PRODUCT
-   ===================================================== */
 
 function closeProduct() {
 
@@ -2779,9 +3094,7 @@ function closeProduct() {
             "productModal"
         )
         .classList.remove("show");
-
 }
-
 
 function closeModalOutside(event) {
 
@@ -2792,14 +3105,41 @@ function closeModalOutside(event) {
     ) {
 
         closeProduct();
-
     }
-
 }
 
+/* =====================================================
+   REVIEW LIMIT
+   ===================================================== */
+
+function hasReviewed(product) {
+
+    if (!currentUser) {
+        return false;
+    }
+
+    if (!Array.isArray(product.reviews)) {
+        return false;
+    }
+
+    return product.reviews.some(
+        review =>
+            String(
+                review.githubUsername
+                ||
+                review.username
+            )
+            .toLowerCase()
+            ===
+            String(
+                currentUser.githubUsername
+            )
+            .toLowerCase()
+    );
+}
 
 /* =====================================================
-   REVIEWS
+   SUBMIT REVIEW
    ===================================================== */
 
 function submitReview(
@@ -2809,27 +3149,61 @@ function submitReview(
 
     event.preventDefault();
 
-
     if (!currentUser) {
 
         alert(
-            "Please login first."
+            "You must log in with GitHub first."
         );
 
         return;
-
     }
 
+    if (
+        currentUser.status !== "Member"
+        &&
+        currentUser.status !== "Admin"
+    ) {
+
+        alert(
+            "Only Members can leave reviews."
+        );
+
+        return;
+    }
+
+    if (isSuspended()) {
+
+        enforceAccountStatus();
+
+        return;
+    }
 
     const product =
         products.find(
             p =>
-                p.id === productId
+                String(p.id)
+                ===
+                String(productId)
         );
 
+    if (!product) {
+        return;
+    }
 
-    if (!product) return;
+    /*
+       HARD CLIENT-SIDE ONE-REVIEW CHECK.
+    */
 
+    if (hasReviewed(product)) {
+
+        alert(
+            "You have already reviewed this product."
+        );
+
+        closeProduct();
+
+        return;
+    }
 
     const stars =
         Number(
@@ -2840,7 +3214,6 @@ function submitReview(
                 .value
         );
 
-
     const text =
         document
             .getElementById(
@@ -2849,21 +3222,41 @@ function submitReview(
             .value
             .trim();
 
+    if (
+        stars < 1 ||
+        stars > 5
+    ) {
 
-    if (!text) return;
+        alert(
+            "Invalid rating."
+        );
 
-
-    if (!product.reviews) {
-
-        product.reviews = [];
-
+        return;
     }
 
+    if (
+        !text ||
+        text.length > 500
+    ) {
+
+        alert(
+            "Review must contain 1-500 characters."
+        );
+
+        return;
+    }
+
+    if (!product.reviews) {
+        product.reviews = [];
+    }
 
     product.reviews.push({
 
+        githubUsername:
+            currentUser.githubUsername,
+
         username:
-            currentUser.username,
+            currentUser.githubUsername,
 
         stars,
 
@@ -2875,24 +3268,209 @@ function submitReview(
 
     });
 
-
     saveProducts();
 
-
     closeProduct();
-
 
     renderHome();
 
     renderCatalog();
 
-
     alert(
         "Review submitted."
     );
-
 }
 
+/* =====================================================
+   PROFILE
+   ===================================================== */
+
+function renderProfile() {
+
+    const content =
+        document.getElementById(
+            "profileContent"
+        );
+
+    if (!currentUser) {
+
+        content.innerHTML = `
+
+            <div class="empty">
+
+                You need a GitHub account
+                to have a profile.
+
+                <br><br>
+
+                <button
+                    class="btn btn-green"
+                    onclick="
+                        showPage('login')
+                    ">
+
+                    GitHub Login
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+    let reviewCount = 0;
+
+    products.forEach(
+        product => {
+
+            if (!product.reviews) {
+                return;
+            }
+
+            product.reviews.forEach(
+                review => {
+
+                    if (
+                        String(
+                            review.githubUsername
+                            ||
+                            review.username
+                        )
+                        .toLowerCase()
+                        ===
+                        currentUser
+                            .githubUsername
+                            .toLowerCase()
+                    ) {
+
+                        reviewCount++;
+                    }
+                }
+            );
+        }
+    );
+
+    content.innerHTML = `
+
+        <div class="profile-header">
+
+            <div class="avatar">
+
+                ${escapeHTML(
+                    currentUser
+                        .githubUsername
+                        .charAt(0)
+                        .toUpperCase()
+                )}
+
+            </div>
+
+            <div>
+
+                <div class="profile-name">
+
+                    ${escapeHTML(
+                        currentUser.githubUsername
+                    )}
+
+                </div>
+
+                <div class="status">
+
+                    ${escapeHTML(
+                        currentUser.status
+                    )}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <strong>
+            GitHub Account
+        </strong>
+
+        <p
+            style="
+                color:#7f887f;
+                line-height:1.6;
+            ">
+
+            @${escapeHTML(
+                currentUser.githubUsername
+            )}
+
+        </p>
+
+        <strong>
+            Account Status
+        </strong>
+
+        <p
+            style="
+                color:#7f887f;
+                line-height:1.6;
+            ">
+
+            ${escapeHTML(
+                currentUser.status
+            )}
+
+        </p>
+
+        ${
+            currentUser.status === "Guest"
+            ?
+
+            `
+
+            <div class="notice warning">
+
+                Your account is currently Guest.
+
+                <br><br>
+
+                An administrator must promote
+                you to Member before you can
+                leave reviews or view prices.
+
+            </div>
+
+            `
+
+            :
+
+            ""
+        }
+
+        <hr
+            style="
+                border-color:#292f29;
+            ">
+
+        <strong>
+            Joined:
+        </strong>
+
+        ${escapeHTML(
+            currentUser.joined
+        )}
+
+        <br><br>
+
+        <strong>
+            Reviews:
+        </strong>
+
+        ${reviewCount}
+
+    `;
+}
 
 /* =====================================================
    ADD PRODUCT
@@ -2902,7 +3480,6 @@ function addProduct(event) {
 
     event.preventDefault();
 
-
     if (!isAdmin()) {
 
         alert(
@@ -2910,9 +3487,7 @@ function addProduct(event) {
         );
 
         return;
-
     }
-
 
     const name =
         document
@@ -2922,14 +3497,12 @@ function addProduct(event) {
             .value
             .trim();
 
-
     const category =
         document
             .getElementById(
                 "newProductCategory"
             )
             .value;
-
 
     const description =
         document
@@ -2939,6 +3512,14 @@ function addProduct(event) {
             .value
             .trim();
 
+    const price =
+        Number(
+            document
+                .getElementById(
+                    "newProductPrice"
+                )
+                .value
+        ) || 0;
 
     const image =
         document
@@ -2948,10 +3529,22 @@ function addProduct(event) {
             .value
             .trim();
 
+    if (
+        !name ||
+        !description
+    ) {
+
+        alert(
+            "Please complete the required fields."
+        );
+
+        return;
+    }
 
     products.unshift({
 
-        id: Date.now(),
+        id:
+            cryptoRandomId(),
 
         name,
 
@@ -2959,47 +3552,43 @@ function addProduct(event) {
 
         description,
 
+        price,
+
         image,
 
         reviews: []
 
     });
 
-
     saveProducts();
-
 
     event.target.reset();
 
+    renderHome();
+
+    renderCatalog();
 
     alert(
         "Product added."
     );
 
-
-    renderHome();
-
-
     showPage("admin");
-
 }
 
-
 /* =====================================================
-   ADMIN DASHBOARD
+   ADMIN
    ===================================================== */
 
 function renderAdmin() {
 
-    if (!isAdmin()) return;
-
+    if (!isAdmin()) {
+        return;
+    }
 
     renderUsers();
 
     renderAdminProducts();
-
 }
-
 
 /* =====================================================
    USERS
@@ -3012,123 +3601,155 @@ function renderUsers() {
             "usersTable"
         );
 
-
     table.innerHTML =
         users
             .map(
                 (user, index) => `
 
-                <tr>
+                    <tr>
 
+                        <td>
 
-                    <td>
+                            @${escapeHTML(
+                                user.githubUsername
+                            )}
 
-                        ${escapeHTML(
-                            user.username
-                        )}
+                            ${
+                                user.githubUsername
+                                    .toLowerCase()
+                                ===
+                                "detroitdistro"
 
-                    </td>
+                                ?
 
+                                `<br>
+                                <span
+                                    style="
+                                        color:#a9cda9;
+                                        font-size:10px;
+                                    ">
+                                    BUILT-IN ADMIN
+                                </span>`
 
-                    <td>
+                                :
 
+                                ""
+                            }
 
-                        <select
-                            class="status-select"
+                        </td>
 
-                            onchange="
-                                changeStatus(
-                                    ${index},
-                                    this.value
-                                )
-                            ">
+                        <td>
 
+                            <select
+                                class="status-select"
+                                onchange="
+                                    changeStatus(
+                                        ${index},
+                                        this.value
+                                    )
+                                ">
 
-                            <option
-                                value="Member"
-                                ${
-                                    user.status
-                                    === "Member"
-                                    ? "selected"
-                                    : ""
-                                }>
+                                <option
+                                    value="Guest"
+                                    ${
+                                        user.status
+                                        ===
+                                        "Guest"
+                                        ? "selected"
+                                        : ""
+                                    }>
+                                    Guest
+                                </option>
 
-                                Member
+                                <option
+                                    value="Member"
+                                    ${
+                                        user.status
+                                        ===
+                                        "Member"
+                                        ? "selected"
+                                        : ""
+                                    }>
+                                    Member
+                                </option>
 
-                            </option>
+                                <option
+                                    value="Admin"
+                                    ${
+                                        user.status
+                                        ===
+                                        "Admin"
+                                        ? "selected"
+                                        : ""
+                                    }>
+                                    Admin
+                                </option>
 
+                                <option
+                                    value="Suspended"
+                                    ${
+                                        user.status
+                                        ===
+                                        "Suspended"
+                                        ? "selected"
+                                        : ""
+                                    }>
+                                    Suspended
+                                </option>
 
-                            <option
-                                value="Approved Seller"
-                                ${
-                                    user.status
-                                    ===
-                                    "Approved Seller"
-                                    ? "selected"
-                                    : ""
-                                }>
+                            </select>
 
-                                Approved Seller
+                        </td>
 
-                            </option>
+                        <td>
 
+                            ${escapeHTML(
+                                user.joined
+                            )}
 
-                            <option
-                                value="Admin"
-                                ${
-                                    user.status
-                                    === "Admin"
-                                    ? "selected"
-                                    : ""
-                                }>
+                        </td>
 
-                                Admin
+                        <td>
 
-                            </option>
+                            ${
+                                user.githubUsername
+                                    .toLowerCase()
+                                ===
+                                "detroitdistro"
 
+                                ?
 
-                            <option
-                                value="Suspended"
-                                ${
-                                    user.status
-                                    === "Suspended"
-                                    ? "selected"
-                                    : ""
-                                }>
+                                `<span
+                                    style="
+                                        color:#809080;
+                                    ">
+                                    Protected
+                                </span>`
 
-                                Suspended
+                                :
 
-                            </option>
+                                `<button
+                                    class="btn btn-red"
+                                    onclick="
+                                        removeUser(
+                                            ${index}
+                                        )
+                                    ">
+                                    Remove
+                                </button>`
+                            }
 
+                        </td>
 
-                        </select>
+                    </tr>
 
-
-                    </td>
-
-
-                    <td>
-
-                        ${escapeHTML(
-                            user.joined
-                        )}
-
-                    </td>
-
-
-                </tr>
-
-            `
+                `
             )
             .join("");
-
 }
-
 
 /* =====================================================
    CHANGE USER STATUS
-
-   THIS ALLOWS ADMINS TO MAKE OTHER USERS ADMIN
    ===================================================== */
 
 function changeStatus(
@@ -3143,82 +3764,78 @@ function changeStatus(
         );
 
         return;
-
     }
-
 
     const targetUser =
         users[index];
 
-
-    if (!targetUser) return;
-
+    if (!targetUser) {
+        return;
+    }
 
     /*
-       Prevent an admin from accidentally
-       removing their own admin privileges.
+       Built-in DetroitDistro cannot be
+       changed, suspended, or deleted.
     */
 
     if (
-        targetUser.username
+        targetUser.githubUsername
+            .toLowerCase()
         ===
-        currentUser.username
-        &&
-        status !== "Admin"
+        "detroitdistro"
     ) {
 
         alert(
-            "You cannot remove your own admin status."
+            "DetroitDistro is the protected default administrator."
         );
-
 
         renderAdmin();
 
-
         return;
-
     }
 
-
-    targetUser.status = status;
-
+    targetUser.status =
+        status;
 
     saveUsers();
 
-
     /*
-       Update current user's copy if
-       they are the account being edited.
+       If editing current user,
+       immediately update their session.
     */
 
     if (
-        currentUser.username
+        currentUser &&
+        currentUser.githubUsername
+            .toLowerCase()
         ===
-        targetUser.username
+        targetUser.githubUsername
+            .toLowerCase()
     ) {
 
         currentUser =
             targetUser;
 
-
-        localStorage.setItem(
-            "silktrail_currentUser",
-            JSON.stringify(
-                currentUser
-            )
+        writeStorage(
+            CURRENT_USER_KEY,
+            currentUser
         );
 
+        updateUserArea();
+
+        if (
+            status === "Suspended"
+        ) {
+
+            enforceAccountStatus();
+
+        }
     }
-
-
-    updateUserArea();
-
 
     renderAdmin();
 
-
     alert(
-        targetUser.username
+        targetUser.githubUsername
         +
         " is now "
         +
@@ -3226,9 +3843,60 @@ function changeStatus(
         +
         "."
     );
-
 }
 
+/* =====================================================
+   REMOVE USER
+   ===================================================== */
+
+function removeUser(index) {
+
+    if (!isAdmin()) {
+        return;
+    }
+
+    const user =
+        users[index];
+
+    if (!user) {
+        return;
+    }
+
+    if (
+        user.githubUsername
+            .toLowerCase()
+        ===
+        "detroitdistro"
+    ) {
+
+        alert(
+            "The default administrator cannot be removed."
+        );
+
+        return;
+    }
+
+    if (
+        !confirm(
+            "Remove @" +
+            user.githubUsername +
+            "?"
+        )
+    ) {
+
+        return;
+    }
+
+    users =
+        users.filter(
+            (_, i) =>
+                i !== index
+        );
+
+    saveUsers();
+
+    renderAdmin();
+}
 
 /* =====================================================
    ADMIN PRODUCTS
@@ -3241,58 +3909,140 @@ function renderAdminProducts() {
             "adminProductsTable"
         );
 
-
     table.innerHTML =
         products
             .map(
                 product => `
 
-                <tr>
+                    <tr>
 
+                        <td>
 
-                    <td>
+                            ${escapeHTML(
+                                product.name
+                            )}
 
-                        ${escapeHTML(
-                            product.name
-                        )}
+                        </td>
 
-                    </td>
+                        <td>
 
-
-                    <td>
-
-                        ${escapeHTML(
-                            product.category
-                        )}
-
-                    </td>
-
-
-                    <td>
-
-                        <button
-                            class="btn btn-red"
-                            onclick="
-                                deleteProduct(
-                                    ${product.id}
+                            ${escapeHTML(
+                                getCategoryPath(
+                                    product.category
                                 )
-                            ">
+                            )}
 
-                            Delete
+                        </td>
 
-                        </button>
+                        <td>
 
-                    </td>
+                            <input
+                                type="number"
+                                min="0"
+                                max="999999"
+                                step="0.01"
+                                value="${Number(
+                                    product.price || 0
+                                ).toFixed(2)}"
+                                style="
+                                    width:100px;
+                                "
+                                onchange="
+                                    changePrice(
+                                        '${escapeJS(
+                                            String(
+                                                product.id
+                                            )
+                                        )}',
+                                        this.value
+                                    )
+                                ">
 
+                        </td>
 
-                </tr>
+                        <td>
 
-            `
+                            <button
+                                class="btn btn-red"
+                                onclick="
+                                    deleteProduct(
+                                        '${escapeJS(
+                                            String(
+                                                product.id
+                                            )
+                                        )}'
+                                    )
+                                ">
+
+                                Delete
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `
             )
             .join("");
-
 }
 
+/* =====================================================
+   CHANGE PRICE
+   ===================================================== */
+
+function changePrice(
+    id,
+    value
+) {
+
+    if (!isAdmin()) {
+        return;
+    }
+
+    const product =
+        products.find(
+            p =>
+                String(p.id)
+                ===
+                String(id)
+        );
+
+    if (!product) {
+        return;
+    }
+
+    const price =
+        Number(value);
+
+    if (
+        !Number.isFinite(price)
+        ||
+        price < 0
+        ||
+        price > 999999
+    ) {
+
+        alert(
+            "Invalid price."
+        );
+
+        renderAdmin();
+
+        return;
+    }
+
+    product.price =
+        Number(
+            price.toFixed(2)
+        );
+
+    saveProducts();
+
+    renderHome();
+
+    renderCatalog();
+}
 
 /* =====================================================
    DELETE PRODUCT
@@ -3300,17 +4050,21 @@ function renderAdminProducts() {
 
 function deleteProduct(id) {
 
-    if (!isAdmin()) return;
-
+    if (!isAdmin()) {
+        return;
+    }
 
     const product =
         products.find(
-            p => p.id === id
+            p =>
+                String(p.id)
+                ===
+                String(id)
         );
 
-
-    if (!product) return;
-
+    if (!product) {
+        return;
+    }
 
     if (
         !confirm(
@@ -3319,27 +4073,323 @@ function deleteProduct(id) {
     ) {
 
         return;
-
     }
-
 
     products =
         products.filter(
-            p => p.id !== id
+            p =>
+                String(p.id)
+                !==
+                String(id)
         );
 
-
     saveProducts();
-
 
     renderHome();
 
     renderCatalog();
 
     renderAdmin();
-
 }
 
+/* =====================================================
+   CATEGORY MANAGEMENT
+   ===================================================== */
+
+function addCategory(event) {
+
+    event.preventDefault();
+
+    if (!isAdmin()) {
+
+        alert(
+            "Administrator access required."
+        );
+
+        return;
+    }
+
+    const name =
+        document
+            .getElementById(
+                "newCategoryName"
+            )
+            .value
+            .trim();
+
+    const parent =
+        document
+            .getElementById(
+                "newCategoryParent"
+            )
+            .value
+            .trim();
+
+    if (!name) {
+        return;
+    }
+
+    /*
+       Prevent duplicate names under
+       the same parent.
+    */
+
+    const duplicate =
+        categories.some(
+            category =>
+                category.name
+                    .toLowerCase()
+                ===
+                name.toLowerCase()
+                &&
+                (
+                    category.parent
+                    ||
+                    ""
+                )
+                ===
+                parent
+        );
+
+    if (duplicate) {
+
+        alert(
+            "That category already exists."
+        );
+
+        return;
+    }
+
+    const id =
+        slugify(name)
+        +
+        "-"
+        +
+        cryptoRandomId()
+            .substring(0, 6);
+
+    categories.push({
+
+        id,
+
+        name,
+
+        parent:
+            parent || null
+
+    });
+
+    saveCategories();
+
+    renderCategorySelects();
+
+    renderCategoryTree();
+
+    renderHomeCategories();
+
+    renderCategoryManager();
+
+    event.target.reset();
+
+    alert(
+        "Category created."
+    );
+}
+
+/* =====================================================
+   CATEGORY MANAGER
+   ===================================================== */
+
+function renderCategoryManager() {
+
+    const container =
+        document.getElementById(
+            "adminCategoryList"
+        );
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML =
+        categories
+            .map(
+                category => `
+
+                    <div
+                        style="
+                            border-bottom:1px solid #292f29;
+                            padding:10px 0;
+                        ">
+
+                        <strong>
+                            ${escapeHTML(
+                                category.name
+                            )}
+                        </strong>
+
+                        <span
+                            style="
+                                color:#626b62;
+                                margin-left:8px;
+                            ">
+
+                            ${
+                                category.parent
+                                ?
+                                "Subsection of " +
+                                escapeHTML(
+                                    getCategoryName(
+                                        category.parent
+                                    )
+                                )
+                                :
+                                "Main Category"
+                            }
+
+                        </span>
+
+                        <button
+                            class="btn btn-red"
+                            style="
+                                float:right;
+                                padding:4px 8px;
+                            "
+                            onclick="
+                                deleteCategory(
+                                    '${escapeJS(
+                                        category.id
+                                    )}'
+                                )
+                            ">
+
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                `
+            )
+            .join("");
+}
+
+/* =====================================================
+   DELETE CATEGORY
+   ===================================================== */
+
+function deleteCategory(id) {
+
+    if (!isAdmin()) {
+        return;
+    }
+
+    /*
+       Do not allow deleting a category
+       that still has products.
+    */
+
+    const hasProducts =
+        products.some(
+            product =>
+                product.category === id
+        );
+
+    if (hasProducts) {
+
+        alert(
+            "You cannot delete a category containing products. Move or delete those products first."
+        );
+
+        return;
+    }
+
+    /*
+       Do not allow deleting a parent
+       that still has subsections.
+    */
+
+    const hasChildren =
+        categories.some(
+            category =>
+                category.parent === id
+        );
+
+    if (hasChildren) {
+
+        alert(
+            "Delete the subsections first."
+        );
+
+        return;
+    }
+
+    /*
+       Keep at least one category.
+    */
+
+    if (categories.length <= 1) {
+
+        alert(
+            "You must keep at least one category."
+        );
+
+        return;
+    }
+
+    const category =
+        getCategoryById(id);
+
+    if (!category) {
+        return;
+    }
+
+    if (
+        !confirm(
+            "Delete category \"" +
+            category.name +
+            "\"?"
+        )
+    ) {
+
+        return;
+    }
+
+    categories =
+        categories.filter(
+            item =>
+                item.id !== id
+        );
+
+    saveCategories();
+
+    renderCategorySelects();
+
+    renderCategoryTree();
+
+    renderHomeCategories();
+
+    renderCategoryManager();
+}
+
+/* =====================================================
+   SLUGIFY
+   ===================================================== */
+
+function slugify(value) {
+
+    return value
+        .toLowerCase()
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        )
+        .substring(0, 40);
+}
 
 /* =====================================================
    RATING
@@ -3354,9 +4404,7 @@ function getRating(product) {
     ) {
 
         return null;
-
     }
-
 
     const total =
         product.reviews.reduce(
@@ -3372,55 +4420,104 @@ function getRating(product) {
             0
         );
 
-
     return (
         total
         /
         product.reviews.length
     ).toFixed(1);
-
 }
-
 
 /* =====================================================
    CATEGORY ICON
    ===================================================== */
 
 function categoryIcon(
-    category
+    categoryId
 ) {
 
-    const icons = {
+    const category =
+        getCategoryById(
+            categoryId
+        );
 
-        Electronics: "▣",
+    const name =
+        category
+        ? category.name.toLowerCase()
+        : "";
 
-        Tools: "⚒",
+    if (
+        name.includes("electronic")
+    ) {
+        return "▣";
+    }
 
-        Cannabis: "✦",
+    if (
+        name.includes("tool")
+    ) {
+        return "⚒";
+    }
 
-        Flower: "✿",
+    if (
+        name.includes("flower")
+    ) {
+        return "✿";
+    }
 
-        Vapes: "◈"
+    if (
+        name.includes("vape")
+    ) {
+        return "◈";
+    }
 
-    };
+    if (
+        name.includes("cannabis")
+    ) {
+        return "✦";
+    }
 
-
-    return (
-        icons[category]
-        ||
-        "□"
-    );
-
+    return "□";
 }
 
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+function searchFromHome(event) {
+
+    if (
+        event.key === "Enter"
+    ) {
+
+        searchCatalog();
+    }
+}
+
+function searchCatalog() {
+
+    const value =
+        document
+            .getElementById(
+                "homeSearch"
+            )
+            .value;
+
+    showPage("catalog");
+
+    document
+        .getElementById(
+            "catalogSearch"
+        )
+        .value =
+        value;
+
+    renderCatalog();
+}
 
 /* =====================================================
    ESCAPE HTML
    ===================================================== */
 
-function escapeHTML(
-    value
-) {
+function escapeHTML(value) {
 
     return String(value)
 
@@ -3448,19 +4545,52 @@ function escapeHTML(
             /'/g,
             "&#039;"
         );
-
 }
 
-
 /* =====================================================
-   START SITE
+   ESCAPE JAVASCRIPT
    ===================================================== */
 
-updateUserArea();
+function escapeJS(value) {
+
+    return String(value)
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
+            /'/g,
+            "\\'"
+        )
+        .replace(
+            /\r/g,
+            "\\r"
+        )
+        .replace(
+            /\n/g,
+            "\\n"
+        );
+}
+
+/* =====================================================
+   START
+   ===================================================== */
+
+renderCategorySelects();
+
+renderHomeCategories();
+
+renderCategoryTree();
 
 renderHome();
 
 renderCatalog();
+
+updateUserArea();
+
+if (isSuspended()) {
+    enforceAccountStatus();
+}
 
 </script>
 
